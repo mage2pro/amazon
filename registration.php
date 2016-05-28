@@ -1,3 +1,3 @@
 <?php
 use Magento\Framework\Component\ComponentRegistrar;
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Dfe_TwoCheckout', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Dfe_AmazonPayments', __DIR__);

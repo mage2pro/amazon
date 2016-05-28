@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/amazon-payments"
-	,"version": "1.0.0"
+	,"version": "0.0.1"
 	,"description": "The «Amazon Payments» extension."
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions/amazon-payments"

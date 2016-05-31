@@ -33,7 +33,7 @@
                 >
                     <label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-                    <comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/amazon-payments'>Amazon Payments</a>» extension?]]></comment>
+                    <comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/amazon-payments' target='_blank'>Amazon Payments</a>» extension?]]></comment>
                 </field>
 				<field
 					id='test'
@@ -46,19 +46,95 @@
 				>
 					<label>Sandbox Mode?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[<a href='https://mage2.pro/t/1696'>How to switch a merchant account to the Sandbox View?</a>]]></comment>
+					<comment><![CDATA[<a href='https://mage2.pro/t/1696' target='_blank'>How to switch a merchant account to the Sandbox View?</a>]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
-				<group
-					id='login_with_amazon'
+				<field
+					id='merchantId'
 					translate='label'
 					type='text'
 					sortOrder='3'
 					showInDefault='1'
+					showInWebsite='0'
+					showInStore='0'
+				>
+					<label>Merchant ID</label>
+					<comment><![CDATA[«<b>Merchant ID</b>» (also known as «<b>Seller ID</b>», «<b>Merchant Token</b>») of your Amazon Seller account.<br/><a href='https://mage2.pro/t/1708' target='_blank'>Where to find it?</a>]]></comment>
+					<validate>required-entry validate-length maximum-length-14 minimum-length-14</validate>
+					<depends>
+						<field id='enable'>1</field>
+					</depends>
+				</field>
+				<field
+					id='webhook'
+					translate='label'
+					type='Df\Framework\Data\Form\Element\Webhook'
+					dfWebhook_routePath='dfe-amazon-payments'
+					dfWebhook_requireHTTPS='true'
+					sortOrder='4'
+					showInDefault='1'
+					showInWebsite='0'
+					showInStore='0'
+				>
+					<label>Notifications URL</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/1717'>How to setup the Instant Notifications? </a>]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<group
+					id='mws'
+					translate='label'
+					type='text'
+					sortOrder='5'
+					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Login with Amazon</label>
+					<label>«Marketplace Web Service» Credentials</label>
+					<depends><field id='enable'>1</field></depends>
+					<field
+						id='accessKeyId'
+						translate='label'
+						type='text'
+						sortOrder='1'
+						showInDefault='1'
+						showInWebsite='0'
+						showInStore='0'
+					>
+						<label>Access Key ID</label>
+						<comment><![CDATA[<a href='https://mage2.pro/t/1713' target='_blank'>Where to find it?</a>]]></comment>
+						<validate>required-entry validate-length maximum-length-20 minimum-length-20</validate>
+						<depends>
+							<field id='enable'>1</field>
+						</depends>
+					</field>
+					<field
+						id='secretAccessKey'
+						translate='label'
+						type='obscure'
+						sortOrder='2'
+						showInDefault='1'
+						showInWebsite='0'
+						showInStore='0'
+					>
+						<label>Secret Access Key</label>
+						<comment><![CDATA[<a href='https://mage2.pro/t/1714' target='_blank'>Where to find it?</a>]]></comment>
+						<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+						<validate>required-entry validate-length maximum-length-40 minimum-length-40</validate>
+						<depends>
+							<field id='enable'>1</field>
+						</depends>
+					</field>
+				</group>
+				<group
+					id='login_with_amazon'
+					translate='label'
+					type='text'
+					sortOrder='6'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>«Login with Amazon» Credentials</label>
 					<depends><field id='enable'>1</field></depends>
 					<field
 						id='clientId'
@@ -70,7 +146,7 @@
 						showInStore='0'
 					>
 						<label>Client ID</label>
-						<comment><![CDATA[<a href='https://mage2.pro/t/1705'>Where to find it?</a>]]></comment>
+						<comment><![CDATA[<a href='https://mage2.pro/t/1705' target='_blank'>Where to find it?</a>]]></comment>
 						<validate>required-entry validate-length maximum-length-61 minimum-length-61</validate>
 						<depends>
 							<field id='enable'>1</field>
@@ -85,8 +161,8 @@
 						showInWebsite='0'
 						showInStore='0'
 					>
-						<label>ClientSecret</label>
-						<comment><![CDATA[<a href='https://mage2.pro/t/1706'>Where to find it?</a>]]></comment>
+						<label>Client Secret</label>
+						<comment><![CDATA[<a href='https://mage2.pro/t/1706' target='_blank'>Where to find it?</a>]]></comment>
 						<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 						<validate>required-entry validate-length maximum-length-64 minimum-length-64</validate>
 						<depends>

@@ -91,7 +91,7 @@
 					showInStore='0'
 				>
 					<label>Allowed JavaScript Origin</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/1717'>Set it in your Amazon Seller account.</a>]]></comment>
+					<comment><![CDATA[<a href='https://payments.amazon.com/documentation/lpwa/201956540'>Set it in your Amazon Seller account.</a>]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<group

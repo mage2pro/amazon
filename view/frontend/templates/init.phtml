@@ -11,11 +11,24 @@
  * https://images-na.ssl-images-amazon.com/images/G/01/lwa/dev/docs/website-developer-guide._TTH_.pdf
  * Page 17.
  */
-/** @var string $clientId */
-$clientId = df_ejs(Dfe\LPA\Settings\Login\Credentials::s()->id());
+use Dfe\LPA\Settings as S;
+use Dfe\LPA\Settings\Login\Credentials as C;
+/**
+ * 2016-06-03
+ * Сделал по аналогии с
+ * https://github.com/amzn/amazon-payments-magento-plugin/blob/v1.4.2/app/code/community/Amazon/Payments/Block/Login/Script.php#L42
+ *https://github.com/amzn/amazon-payments-magento-plugin/blob/v1.4.2/app/code/community/Amazon/Payments/Block/Script.php#L56
+ */
+/** @var string $widgetUrl */
+$widgetUrl = df_cc_url(
+	'https://static-na.payments-amazon.com/OffAmazonPayments/us'
+	,S::s()->test() ? 'sandbox' : null
+	,'js/Widgets.js?sellerId=' . S::s()->merchantId()
+);
 ?>
 <script type='text/javascript'>
 	window.onAmazonLoginReady = function() {
-		amazon.Login.setClientId('<?php echo $clientId; ?>');
+		amazon.Login.setClientId('<?php echo df_ejs(C::s()->id()); ?>');
 	};
 </script>
+<script async='async' type='text/javascript' src='<?php echo $widgetUrl; ?>'></script>

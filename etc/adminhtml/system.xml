@@ -103,7 +103,7 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>«Marketplace Web Service» Credentials</label>
+					<label>Marketplace Web Service Credentials</label>
 					<depends><field id='enable'>1</field></depends>
 					<field
 						id='accessKeyId'
@@ -148,7 +148,7 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>«Login with Amazon»</label>
+					<label>Login with Amazon</label>
 					<depends><field id='enable'>1</field></depends>
 					<group
 						id='credentials'
@@ -161,7 +161,7 @@
 					>
 						<label>Credentials</label>
 						<field
-							id='clientId'
+							id='id'
 							translate='label'
 							type='text'
 							sortOrder='1'
@@ -174,7 +174,7 @@
 							<validate>required-entry validate-length maximum-length-61 minimum-length-61</validate>
 						</field>
 						<field
-							id='clientSecret'
+							id='secret'
 							translate='label'
 							type='obscure'
 							sortOrder='2'
@@ -189,7 +189,7 @@
 						</field>
 					</group>
 					<group
-						id='button_locations'
+						id='locations'
 						translate='label'
 						type='text'
 						sortOrder='2'

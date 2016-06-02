@@ -11,9 +11,11 @@
  * https://images-na.ssl-images-amazon.com/images/G/01/lwa/dev/docs/website-developer-guide._TTH_.pdf
  * Page 17.
  */
+/** @var string $clientId */
+$clientId = df_ejs(Dfe\LPA\Settings\Login\Credentials::s()->id());
 ?>
 <script type='text/javascript'>
 	window.onAmazonLoginReady = function() {
-		amazon.Login.setClientId('YOUR_CLIENT_ID_HERE');
+		amazon.Login.setClientId('<?php echo $clientId; ?>');
 	};
 </script>

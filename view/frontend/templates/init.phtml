@@ -1,0 +1,19 @@
+<?php
+/**
+ * 2016-06-02
+ * «Login and Pay with Amazon Integration Guide» → «Step 3: Add a button widget»
+ * https://payments.amazon.com/documentation/lpwa/201952050
+ *
+ * «Login with Amazon» → «Getting Started for Web» →  «3. Add the SDK for JavaScript»
+ * http://login.amazon.com/website
+ *
+ * «Login with Amazon Developer Guide» → «Loading the JavaScript SDK»
+ * https://images-na.ssl-images-amazon.com/images/G/01/lwa/dev/docs/website-developer-guide._TTH_.pdf
+ * Page 17.
+ */
+?>
+<script type='text/javascript'>
+	window.onAmazonLoginReady = function() {
+		amazon.Login.setClientId('YOUR_CLIENT_ID_HERE');
+	};
+</script>

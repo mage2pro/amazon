@@ -13,15 +13,15 @@
                 в английском алфавите.
             -->
             <group
-                id='amazon_payments'
+                id='lpa'
                 translate='label'
                 type='text'
-                sortOrder='116'
+                sortOrder='1216'
                 showInDefault='1'
                 showInWebsite='1'
                 showInStore='1'
             >
-                <label>Amazon Payments</label>
+                <label>Login and Pay with Amazon</label>
                 <field
                     id='enable'
                     translate='label'
@@ -33,7 +33,7 @@
                 >
                     <label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-                    <comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/amazon-payments' target='_blank'>Amazon Payments</a>» extension?]]></comment>
+                    <comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/login-and-pay-with-amazon' target='_blank'>Login and Pay with Amazon</a>» extension?]]></comment>
                 </field>
 				<field
 					id='test'
@@ -83,15 +83,15 @@
 				<field
 					id='allowedJavaScriptOrigin'
 					translate='label'
-					type='Dfe\AmazonPayments\Element\JsOrigin'
+					type='Dfe\LPA\Element\JsOrigin'
 					dfWebhook_requireHTTPS='true'
 					sortOrder='4'
 					showInDefault='1'
 					showInWebsite='0'
 					showInStore='0'
 				>
-					<label>Allowed JavaScript Origin</label>
-					<comment><![CDATA[<a href='https://payments.amazon.com/documentation/lpwa/201956540'>Set it in your Amazon Seller account.</a>]]></comment>
+					<label>Allowed JavaScript Origins</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/1738' target='_blank'>Set it in your Amazon Seller account.</a>]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<group
@@ -148,41 +148,52 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>«Login with Amazon» Credentials</label>
+					<label>«Login with Amazon»</label>
 					<depends><field id='enable'>1</field></depends>
-					<field
-						id='clientId'
+					<group
+						id='credentials'
 						translate='label'
 						type='text'
-						sortOrder='1'
+						sortOrder='6'
 						showInDefault='1'
-						showInWebsite='0'
-						showInStore='0'
+						showInWebsite='1'
+						showInStore='1'
 					>
-						<label>Client ID</label>
-						<comment><![CDATA[<a href='https://mage2.pro/t/1705' target='_blank'>Where to find it?</a>]]></comment>
-						<validate>required-entry validate-length maximum-length-61 minimum-length-61</validate>
-						<depends>
-							<field id='enable'>1</field>
-						</depends>
-					</field>
-					<field
-						id='clientSecret'
-						translate='label'
-						type='obscure'
-						sortOrder='2'
-						showInDefault='1'
-						showInWebsite='0'
-						showInStore='0'
-					>
-						<label>Client Secret</label>
-						<comment><![CDATA[<a href='https://mage2.pro/t/1706' target='_blank'>Where to find it?</a>]]></comment>
-						<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-						<validate>required-entry validate-length maximum-length-64 minimum-length-64</validate>
-						<depends>
-							<field id='enable'>1</field>
-						</depends>
-					</field>
+						<label>Credentials</label>
+						<field
+							id='clientId'
+							translate='label'
+							type='text'
+							sortOrder='1'
+							showInDefault='1'
+							showInWebsite='0'
+							showInStore='0'
+						>
+							<label>Client ID</label>
+							<comment><![CDATA[<a href='https://mage2.pro/t/1705' target='_blank'>Where to find it?</a>]]></comment>
+							<validate>required-entry validate-length maximum-length-61 minimum-length-61</validate>
+							<depends>
+								<field id='enable'>1</field>
+							</depends>
+						</field>
+						<field
+							id='clientSecret'
+							translate='label'
+							type='obscure'
+							sortOrder='2'
+							showInDefault='1'
+							showInWebsite='0'
+							showInStore='0'
+						>
+							<label>Client Secret</label>
+							<comment><![CDATA[<a href='https://mage2.pro/t/1706' target='_blank'>Where to find it?</a>]]></comment>
+							<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+							<validate>required-entry validate-length maximum-length-64 minimum-length-64</validate>
+							<depends>
+								<field id='enable'>1</field>
+							</depends>
+						</field>
+					</group>
 				</group>
             </group>
         </section>

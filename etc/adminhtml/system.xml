@@ -154,7 +154,7 @@
 						id='credentials'
 						translate='label'
 						type='text'
-						sortOrder='6'
+						sortOrder='1'
 						showInDefault='1'
 						showInWebsite='1'
 						showInStore='1'
@@ -172,9 +172,6 @@
 							<label>Client ID</label>
 							<comment><![CDATA[<a href='https://mage2.pro/t/1705' target='_blank'>Where to find it?</a>]]></comment>
 							<validate>required-entry validate-length maximum-length-61 minimum-length-61</validate>
-							<depends>
-								<field id='enable'>1</field>
-							</depends>
 						</field>
 						<field
 							id='clientSecret'
@@ -189,9 +186,30 @@
 							<comment><![CDATA[<a href='https://mage2.pro/t/1706' target='_blank'>Where to find it?</a>]]></comment>
 							<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 							<validate>required-entry validate-length maximum-length-64 minimum-length-64</validate>
-							<depends>
-								<field id='enable'>1</field>
-							</depends>
+						</field>
+					</group>
+					<group
+						id='button_locations'
+						translate='label'
+						type='text'
+						sortOrder='2'
+						showInDefault='1'
+						showInWebsite='1'
+						showInStore='1'
+					>
+						<label>Button Locations</label>
+						<field
+							id='header'
+							translate='label'
+							type='Df\Framework\Data\Form\Element\Checkbox'
+							sortOrder='1'
+							showInDefault='1'
+							showInWebsite='1'
+							showInStore='1'
+						>
+							<label>Show in Header?</label>
+							<backend_model>Df\Config\Backend\Checkbox</backend_model>
+							<comment><![CDATA[Show the «<b>Login with Amazon</b>» button in the header of the frontend pages, near to the standard «<b>Sign In</b>» and «<b>Create an Account</b>» links?]]></comment>
 						</field>
 					</group>
 				</group>

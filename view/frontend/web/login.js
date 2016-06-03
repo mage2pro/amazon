@@ -8,6 +8,7 @@ define([
 	 * @param {?Object} config.css
 	 * @param {String} config.domId
 	 * @param {String} config.merchantId
+	 * @param {String} config.redirect
 	 * @param {Boolean} config.sandbox
 	 * @param {String} config.size
 	 * @param {?String} config.style
@@ -75,12 +76,56 @@ define([
 					 */
 					,type: config.type
 					,authorization: function() {
-						authRequest = amazon.Login.authorize ({
-							scope: 'SCOPES'
-							, popup: 'POPUP_PARAMETER'
-						}
-						, 'REDIRECT_URL'
-					);}
+						authRequest = amazon.Login.authorize({
+							/**
+							 * 2016-06-03
+							 * https://payments.amazon.com/documentation/lpwa/201953980
+							 *
+							 * The popup parameter determines whether the buyer
+							 * will be presented with a pop-up window to authenticate,
+							 * or if the buyer will instead be redirected
+							 * to an Amazon Payments page to authenticate.
+							 *
+							 * Use one of the following popup parameters:
+							 *
+							 * true — An Amazon Payments authentication screen is presented
+							 * in a pop-up dialog where buyers can authenticate
+							 * without ever leaving your website.
+							 * This value is recommended for desktops
+							 * where the button widget is presented on a secure page.
+							 * Please be aware that this option requires
+							 * the button to reside on an HTTPS page with a valid SSL certificate.
+							 *
+							 * false — The buyer is redirected to an Amazon Payments page
+							 * within the same browser window.
+							 * This value is recommended for smartphone optimized devices
+							 * or if you are rendering the button widget on a non-secure page.
+							 * Please be aware that the redirect URL must use HTTPS protocol
+							 * and have a valid SSL certificate.
+							 */
+							popup: 'true'
+							/**
+							 * 2016-06-03
+							 * https://payments.amazon.com/documentation/lpwa/201953980
+							 * «profile»
+							 * Gives access to the full user profile
+							 * (username, email address, and userID) after login.
+							 *
+							 * «payments:widget»
+							 * Required to show the Amazon Payments widgets
+							 * (address and wallet widget) on your page.
+							 * If used without the parameter below,
+							 * it gives access to the full shipping address
+							 * after ConfirmOrderReference call.
+							 *
+							 * «payments:shipping_address»:
+							 * Gives access to the full shipping address
+							 * via the GetOrderReferenceDetails API call
+							 * as soon as an address has been selected in the address widget.
+							 */
+							,scope: 'profile payments:widget payments:shipping_address'
+						}, config.redirect);
+					}
 				});
 				// 2016-06-03
 				// Помещаем это именно сюда, чтобы стили не применялись

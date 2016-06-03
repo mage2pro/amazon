@@ -20,6 +20,7 @@ class Login extends AbstractBlock {
 				'clientId' => C::s()->id()
 				,'domId' => $this->domId()
 				,'merchantId' => S::s()->merchantId()
+				,'redirect' => df_url('dfe-lpa/login', ['_secure' => true])
 				,'sandbox' => S::s()->test()
 			])
 			. df_link_inline(df_asset_name('Dfe_LPA::login.css'))

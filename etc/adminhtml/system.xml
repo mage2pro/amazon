@@ -209,7 +209,20 @@
 						>
 							<label>Show in Header?</label>
 							<backend_model>Df\Config\Backend\Checkbox</backend_model>
-							<comment><![CDATA[Show the «<b>Login with Amazon</b>» button in the header of the frontend pages, near to the standard «<b>Sign In</b>» and «<b>Create an Account</b>» links?]]></comment>
+							<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button in the header of the frontend pages, near to the standard «<b>Sign In</b>» and «<b>Create an Account</b>» links.]]></comment>
+						</field>
+						<field
+							id='loginPage'
+							translate='label'
+							type='Df\Framework\Data\Form\Element\Checkbox'
+							sortOrder='2'
+							showInDefault='1'
+							showInWebsite='1'
+							showInStore='1'
+						>
+							<label>Show on Login Page?</label>
+							<backend_model>Df\Config\Backend\Checkbox</backend_model>
+							<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button on the «<b>Customer Login</b>» page, above the standard «<b>Registered Customers</b>» and «<b>New Customers</b>» blocks.]]></comment>
 						</field>
 					</group>
 				</group>

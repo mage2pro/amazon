@@ -16,14 +16,14 @@ class Login extends AbstractBlock {
 	 */
 	protected function _toHtml() {
 		return
-			!S::s()->enable() ? '' : df_x_magento_init('Dfe_LPA/login', [
+			!S::s()->enable() ? '' : df_x_magento_init('Dfe_LPA/login', $this['jsOptions'] + [
 				'clientId' => C::s()->id()
 				,'domId' => $this->domId()
 				,'merchantId' => S::s()->merchantId()
 				,'sandbox' => S::s()->test()
 			])
 			. df_link_inline(df_asset_name('Dfe_LPA::login.css'))
-			. df_tag('li', [], df_tag('div', ['id' => $this->domId()]))
+			. df_tag('div', ['id' => $this->domId()])
 		;
 	}
 

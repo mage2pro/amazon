@@ -12,7 +12,6 @@
 			<block
 				class='Dfe\LPA\Block\Login'
 				name='dfe.lpa.login.header'
-				template='main.phtml'
 				ifconfig='df_payment/lpa/login/locations/header'
 				before='-'
 			/>

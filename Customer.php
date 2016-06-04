@@ -37,38 +37,60 @@ class Customer extends \Df\Customer\External\Customer {
 
 	/**
 	 * 2016-06-04
-	 * Проверка токена.
-	 * «Once you receive an access token using the implicit grant,
-	 * it is highly recommended that you verify the authenticity of the access token
-	 * before you retrieve a customer profile using that token.
-	 * If a malicious site can induce a user to login,
-	 * they can take the valid access token they receive
-	 * and use it to mimic an authorization response to your site.
-	 * To verify a token, make a secure HTTP call to https://api.amazon.com/auth/O2/tokeninfo,
-	 * passing the access token you wish to verify.
-	 * You can specify the access token as a query parameter.»
-	 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/implicit_grant.html
-	 *
-	 * Ответ сервера:
-	 * {
-	     "iss":"https://www.amazon.com",
-	     "user_id": "amznl.account.K2LI23KL2LK2",
-	     "aud": "amznl.oa2-client.ASFWDFBRN",
-	     "app_id": "amznl.application.436457DFHDH",
-	     "exp": 3597,
-	     "iat": l3ll280970,
-	  }
-	 * «Compare the aud value to the client_id you are using for your application.
-	 * If they are different, the access token was not requested by your application,
-	 * and you should not use the access token.»
-	 *
 	 * @override
 	 * @see \Df\Customer\External\Customer::validate()
 	 * @used-by \Df\Customer\External\ReturnT::c()
 	 * @return void
 	 * @throws \Exception
 	 */
-	public function validate() {df_assert_eq(C::s()->id(), $this->response('auth/o2/tokeninfo', 'aud'));}
+	public function validate() {
+		/**
+		 * «If the user did not grant the request for access, or an error occurs,
+		 * the authorization service will redirect the user-agent (a user's browser)
+		 * to a URI specified by the client.
+		 * That URI will contain error parameters detailing the error.»
+		 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/implicit_grant.html
+		 *
+		 * HTTP/l.l 302 Found
+		 * Location: https://client.example.com/cb#error=access_denied
+		 * &state=208257577ll0975l93l2l59l895857093449424
+		 */
+		/** @var string|null $errorCode */
+		$errorCode = df_request('error');
+		if ($errorCode) {
+			/** @var string|null $errorDescription */
+			$errorDescription = df_request('error_description', $errorCode);
+			df_error("[Login with Amazon]: «{$errorDescription}».");
+		}
+		/**
+		 * 2016-06-04
+		 * Проверка токена.
+		 * «Once you receive an access token using the implicit grant,
+		 * it is highly recommended that you verify the authenticity of the access token
+		 * before you retrieve a customer profile using that token.
+		 * If a malicious site can induce a user to login,
+		 * they can take the valid access token they receive
+		 * and use it to mimic an authorization response to your site.
+		 * To verify a token, make a secure HTTP call to https://api.amazon.com/auth/O2/tokeninfo,
+		 * passing the access token you wish to verify.
+		 * You can specify the access token as a query parameter.»
+		 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/implicit_grant.html
+		 *
+		 * Ответ сервера:
+		 * {
+		     "iss":"https://www.amazon.com",
+		     "user_id": "amznl.account.K2LI23KL2LK2",
+		     "aud": "amznl.oa2-client.ASFWDFBRN",
+		     "app_id": "amznl.application.436457DFHDH",
+		     "exp": 3597,
+		     "iat": l3ll280970,
+		  }
+		 * «Compare the aud value to the client_id you are using for your application.
+		 * If they are different, the access token was not requested by your application,
+		 * and you should not use the access token.»
+		 */
+		df_assert_eq(C::s()->id(), $this->response('auth/o2/tokeninfo', 'aud'));
+	}
 
 	/**
 	 * 2016-06-04

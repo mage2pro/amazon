@@ -212,6 +212,11 @@ define([
 								].join(' ')
 								/**
 								 * 2016-06-05
+								 * Запоминаем адрес страницы, на которой находился посетитель
+								 * непосредственно перед авторизацией.
+								 * Когда сервис авторизации вернёт посетителя обратно в наш магазин,
+								 * мы перенаправим посетителя на эту страницу.
+								 *
 								 * «An opaque value used by the client
 								 * to maintain state between this request and the response.
 								 * The Login with Amazon authorization service will include this value

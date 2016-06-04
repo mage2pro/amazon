@@ -24,6 +24,9 @@ use Dfe\LPA\Setup\InstallSchema;
  * HTTP/l.l 302 Found
  * Location: https://client.example.com/cb#error=access_denied
  * &state=208257577ll0975l93l2l59l895857093449424
+ *
+ * 2016-06-05
+ * Проверку на подобные сбои мы производим в методе @see \Dfe\LPA\Customer::validate()
  */
 class Index extends ReturnT {
 	/**
@@ -45,11 +48,11 @@ class Index extends ReturnT {
 	protected function customerIdFieldName() {return InstallSchema::F__ID;}
 
 	/**
-	 * 2016-06-04
+	 * 2016-06-05
 	 * @override
-	 * @see \Df\Customer\External\ReturnT::redirectUrl()
+	 * @see \Df\Customer\External\ReturnT::redirectUrlKey()
 	 * @used-by \Df\Customer\External\ReturnT::execute()
 	 * @return string
 	 */
-	protected function redirectUrl() {return df_request('state');}
+	protected function redirectUrlKey() {return 'state';}
 }

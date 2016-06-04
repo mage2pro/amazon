@@ -29,7 +29,15 @@ define([
 			if (df.defined(config.wrapper)) {
 				$container.wrap(config.wrapper);
 			}
-			window.onAmazonLoginReady = function() {amazon.Login.setClientId(config.clientId);};
+			window.onAmazonLoginReady = function() {
+				/**
+				 * 2016-06-04
+				 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/javascript_sdk_reference.html#setClientId
+				 * «Sets the client identifier that will be used to request authorization.
+				 * You must call this function before calling authorize.»
+				 */
+				amazon.Login.setClientId(config.clientId);
+			};
 			/**
 			 * 2016-06-03
 			 * Сделал по аналогии с
@@ -48,6 +56,24 @@ define([
 				 * 2016-06-03
 				 * «Login and Pay with Amazon Integration Guide» → «Widgets» → «Button widgets»
 				 * https://payments.amazon.com/documentation/lpwa/201953980
+				 *
+				 * 2016-06-04
+				 * Вообще говоря, мы не обязаны использовать стандартную кнопку «Login with Amazon»,
+				 * а вместо этого можем использовать ссылку https://www.amazon.com/ap/oa с параметрами:
+				 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/implicit_grant.html
+				 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/authorization_code_grant.html
+				 *
+				 * Например:
+				 * https://www.amazon.com/ap/oa?client_id=foodev
+				 * &scope=profile&response_type=token&state=208257577ll0975l93l2l59l89585709344942
+				 * &redirect_uri=https://client.example.com/redirect/
+				 *
+				 * При этом есть две технологии взаимодействия с сервером Amazon:
+				 * «Authorization Code Grant» и «Implicit Grant», они чуть различаются
+				 * серверной обработкой магазина:
+				 * при «Implicit Grant» надо сделать один дополнительный запрос к API:
+				 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/authorization_grants.html
+				 *  Виджет ниже использует «Implicit Grant».
 				 */
 				OffAmazonPayments.Button(config.domId, config.merchantId, {
 					/**
@@ -76,55 +102,133 @@ define([
 					 */
 					,type: config.type
 					,authorization: function() {
-						authRequest = amazon.Login.authorize({
+						/**
+						 * 2016-06-04
+						 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/javascript_sdk_reference.html#authorize
+						 */
+						authRequest = amazon.Login.authorize(
+							{
+								/**
+								 * 2016-06-03
+								 * https://payments.amazon.com/documentation/lpwa/201953980
+								 *
+								 * The popup parameter determines whether the buyer
+								 * will be presented with a pop-up window to authenticate,
+								 * or if the buyer will instead be redirected
+								 * to an Amazon Payments page to authenticate.
+								 *
+								 * Use one of the following popup parameters:
+								 *
+								 * true — An Amazon Payments authentication screen is presented
+								 * in a pop-up dialog where buyers can authenticate
+								 * without ever leaving your website.
+								 * This value is recommended for desktops
+								 * where the button widget is presented on a secure page.
+								 * Please be aware that this option requires
+								 * the button to reside on an HTTPS page with a valid SSL certificate.
+								 *
+								 * false — The buyer is redirected to an Amazon Payments page
+								 * within the same browser window.
+								 * This value is recommended for smartphone optimized devices
+								 * or if you are rendering the button widget on a non-secure page.
+								 * Please be aware that the redirect URL must use HTTPS protocol
+								 * and have a valid SSL certificate.
+								 */
+								popup: 'true'
+								/**
+								 * 2016-06-03
+								 * https://payments.amazon.com/documentation/lpwa/201953980
+								 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/customer_profile.html
+								 */
+								,scope: [
+									/**
+									 * 2016-06-03
+									 * «Gives access to the full shipping address
+									 * via the GetOrderReferenceDetails API call
+									 * as soon as an address has been selected in the address widget.»
+									 * https://payments.amazon.com/documentation/lpwa/201953980
+									 *
+									 * 2016-06-04
+									 * Документация к GetOrderReferenceDetails:
+									 * https://payments.amazon.com/documentation/apireference/201751970
+									 */
+									'payments:shipping_address'
+									/**
+									 * 2016-06-03
+									 * https://payments.amazon.com/documentation/lpwa/201953980
+									 * «Required to show the Amazon Payments widgets
+									 * (address and wallet widget) on your page.
+									 * If used without the parameter below,
+									 * it gives access to the full shipping address
+									 * after ConfirmOrderReference call.»
+									 */
+									,'payments:widget'
+									/**
+									 * 2016-06-03
+									 * «Gives access to the full user profile
+									 * (username, email address, and userID) after login.»
+									 * https://payments.amazon.com/documentation/lpwa/201953980
+									 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/customer_profile.html
+									 *
+									 * Например:
+										{
+											"user_id": "amzn1.account.AGM6GZJB6GO42REKZDL33HG7GEJA",
+											"name": "Jack London",
+											"email": "test-customer@mage2.pro"
+										}
+									 */
+									,'profile'
+									/**
+									 * 2016-06-04
+									 * «This includes the user's zip/postal code number
+									 * from their primary shipping address.
+									 * The postal code provides valuable location data
+									 * that allows you to tune your offerings
+									 * and understand your customers better.»
+									 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/customer_profile.html
+									 *
+									 * Например:
+										{
+											"user_id": "amzn1.account.AGM6GZJB6GO42REKZDL33HG7GEJA",
+											"name": "Jack London",
+											"email": "test-customer@mage2.pro",
+											"postal_code": "98101"
+										}
+									 *
+									 * Сначала я подумал, что запрашивать почтовый индекс тут необязательно,
+									 * потому что мы уже запросили полномочия «payments:shipping_address»,
+									 * и мы можем получить почтовый индекс оттуда.
+									 * Однако читаем внимательно комментарий к «payments:shipping_address»:
+									 * «Gives access to the full shipping address
+									 * via the GetOrderReferenceDetails API call
+									 * as soon as an address has been selected in the address widget.»
+									 * Т.е. мы получим доступ к адресу покупателя
+									 * только после того, как покупатель выберет этот адрес.
+									 *
+									 * Также обратите внимание, что полномочия «profile»
+									 * не дают доступ к почтовому индексу.
+									 */
+									,'profile:postal_code'
+								].join(' ')
+							}
 							/**
-							 * 2016-06-03
-							 * https://payments.amazon.com/documentation/lpwa/201953980
+							 * 2016-06-04
+							 * «If next is a URI, once the user logs in
+							 * the current window will be redirected to the URI
+							 * and the authorization response will be added to the query string.
+							 * The URI must use the HTTPS protocol
+							 * and belong to the same domain as the current window.»
+							 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/javascript_sdk_reference.html#authorize
 							 *
-							 * The popup parameter determines whether the buyer
-							 * will be presented with a pop-up window to authenticate,
-							 * or if the buyer will instead be redirected
-							 * to an Amazon Payments page to authenticate.
-							 *
-							 * Use one of the following popup parameters:
-							 *
-							 * true — An Amazon Payments authentication screen is presented
-							 * in a pop-up dialog where buyers can authenticate
-							 * without ever leaving your website.
-							 * This value is recommended for desktops
-							 * where the button widget is presented on a secure page.
-							 * Please be aware that this option requires
-							 * the button to reside on an HTTPS page with a valid SSL certificate.
-							 *
-							 * false — The buyer is redirected to an Amazon Payments page
-							 * within the same browser window.
-							 * This value is recommended for smartphone optimized devices
-							 * or if you are rendering the button widget on a non-secure page.
-							 * Please be aware that the redirect URL must use HTTPS protocol
-							 * and have a valid SSL certificate.
+							 * Вообще говоря, вместо URL здесь можно указать функцию JavaScript,
+							 * однако нам выгоднее перенаправить покупателя на URL,
+							 * потому что нам нужно записать результаты авторизации в сессию покупателя,
+							 * и я не совсем понимаю, как это делать асинхронно,
+							 * а вот с перенаправлением я уже реализовал пдобное в модуле Facebook Login:
+							 * https://mage2.pro/c/extensions/facebook-login
 							 */
-							popup: 'true'
-							/**
-							 * 2016-06-03
-							 * https://payments.amazon.com/documentation/lpwa/201953980
-							 * «profile»
-							 * Gives access to the full user profile
-							 * (username, email address, and userID) after login.
-							 *
-							 * «payments:widget»
-							 * Required to show the Amazon Payments widgets
-							 * (address and wallet widget) on your page.
-							 * If used without the parameter below,
-							 * it gives access to the full shipping address
-							 * after ConfirmOrderReference call.
-							 *
-							 * «payments:shipping_address»:
-							 * Gives access to the full shipping address
-							 * via the GetOrderReferenceDetails API call
-							 * as soon as an address has been selected in the address widget.
-							 */
-							,scope: 'profile payments:widget payments:shipping_address'
-						}, config.redirect);
+							, config.redirect
+						);
 					}
 				});
 				// 2016-06-03

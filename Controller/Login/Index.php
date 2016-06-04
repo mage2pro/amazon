@@ -49,6 +49,7 @@ class Index extends ReturnT {
 
 	/**
 	 * 2016-06-05
+	 * https://code.dmitry-fedyuk.com/m2e/login-and-pay-with-amazon/blob/4f911a0d/view/frontend/web/login.js#L232
 	 * @override
 	 * @see \Df\Customer\External\ReturnT::redirectUrlKey()
 	 * @used-by \Df\Customer\External\ReturnT::execute()

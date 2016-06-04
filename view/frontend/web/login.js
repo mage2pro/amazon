@@ -216,6 +216,7 @@ define([
 								 * непосредственно перед авторизацией.
 								 * Когда сервис авторизации вернёт посетителя обратно в наш магазин,
 								 * мы перенаправим посетителя на эту страницу.
+								 * https://code.dmitry-fedyuk.com/m2e/login-and-pay-with-amazon/blob/4f911a0d/Controller/Login/Index.php#L57
 								 *
 								 * «An opaque value used by the client
 								 * to maintain state between this request and the response.

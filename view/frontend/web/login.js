@@ -210,6 +210,21 @@ define([
 									 */
 									,'profile:postal_code'
 								].join(' ')
+								/**
+								 * 2016-06-05
+								 * «An opaque value used by the client
+								 * to maintain state between this request and the response.
+								 * The Login with Amazon authorization service will include this value
+								 * when redirecting the user back to the client.
+								 * It is also used to prevent crosssite request forgery.»
+								 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/implicit_grant.html
+								 *
+								 * Это значение вернётся к нам, когда сервер Amazon вернёт нам покупателя:
+								 * https://client.example.com/cb#access_token=Atza|IQEBLj...
+								 * &state=208257577ll0975l93l2l59l895857093449424
+								 * &token_type=bearer&expires_in=3600&scope=profile
+								 */
+								,state: window.location.href
 							}
 							/**
 							 * 2016-06-04

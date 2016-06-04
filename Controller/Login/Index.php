@@ -2,6 +2,7 @@
 namespace Dfe\LPA\Controller\Login;
 use Df\Customer\External\ReturnT;
 use Dfe\LPA\Customer;
+use Dfe\LPA\Setup\InstallSchema;
 /**
  * 2016-06-04
  * «Integrate with Your Existing Account System»
@@ -41,5 +42,14 @@ class Index extends ReturnT {
 	 * @used-by \Df\Customer\External\ReturnT::customer()
 	 * @return string
 	 */
-	protected function customerIdFieldName() {return InstallSchema::F__TOKEN_FOR_BUSINESS;}
+	protected function customerIdFieldName() {return InstallSchema::F__ID;}
+
+	/**
+	 * 2016-06-04
+	 * @override
+	 * @see \Df\Customer\External\ReturnT::redirectUrl()
+	 * @used-by \Df\Customer\External\ReturnT::execute()
+	 * @return string
+	 */
+	protected function redirectUrl() {return df_request('state');}
 }

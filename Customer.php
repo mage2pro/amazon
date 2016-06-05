@@ -36,6 +36,13 @@ class Customer extends \Df\Customer\External\Customer {
 	public function nameFull() {return $this->p('name');}
 
 	/**
+	 * 2016-06-05
+	 * @used-by \Dfe\LPA\Controller\Login\Index::addressData()
+	 * @return string|null
+	 */
+	public function postalCode() {return $this->p('postal_code');}
+
+	/**
 	 * 2016-06-04
 	 * @override
 	 * @see \Df\Customer\External\Customer::validate()
@@ -175,10 +182,10 @@ class Customer extends \Df\Customer\External\Customer {
 	 * @return array(string => string)
 	 */
 	private function response($path, $key, $default = null) {
-		if (!isset($this->{__METHOD__})) {
-			$this->{__METHOD__} = df_http_json($this->url($path));
+		if (!isset($this->{__METHOD__}[$path])) {
+			$this->{__METHOD__}[$path] = df_http_json($this->url($path));
 		}
-		return dfa($this->{__METHOD__}, $key, $default);
+		return dfa($this->{__METHOD__}[$path], $key, $default);
 	}
 
 	/**

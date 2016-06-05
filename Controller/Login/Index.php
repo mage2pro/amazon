@@ -27,8 +27,19 @@ use Dfe\LPA\Setup\InstallSchema;
  *
  * 2016-06-05
  * Проверку на подобные сбои мы производим в методе @see \Dfe\LPA\Customer::validate()
+ *
+ * @method \Dfe\LPA\Customer c()
  */
 class Index extends ReturnT {
+	/**
+	 * 2016-06-05
+	 * @override
+	 * @see \Df\Customer\External\ReturnT::addressData()
+	 * @used-by \Df\Customer\External\ReturnT::register()
+	 * @return array(string => mixed)
+	 */
+	protected function addressData() {return ['postcode' => $this->c()->postalCode()];}
+
 	/**
 	 * 2016-06-04
 	 * @override

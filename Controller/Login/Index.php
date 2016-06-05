@@ -60,6 +60,20 @@ class Index extends ReturnT {
 
 	/**
 	 * 2016-06-05
+	 * Не всегда имеет смысл автоматически создавать адрес.
+	 * В частности, для Amazon решил этого не делать,
+	 * потому что автоматический адрес создаётся на основании геолокации, что не точно,
+	 * а в случае с Amazon мы гарантированно можем получить точный адрес из профиля Amazon,
+	 * поэтому нам нет никакого смысла забивать систему неточным автоматическим адресом.
+	 * @override
+	 * @used-by \Df\Customer\External\ReturnT::needCreateAddress()
+	 * @used-by \Df\Customer\External\ReturnT::register()
+	 * @return bool
+	 */
+	protected function needCreateAddress() {return false;}
+
+	/**
+	 * 2016-06-05
 	 * https://code.dmitry-fedyuk.com/m2e/login-and-pay-with-amazon/blob/4f911a0d/view/frontend/web/login.js#L232
 	 * @override
 	 * @see \Df\Customer\External\ReturnT::redirectUrlKey()

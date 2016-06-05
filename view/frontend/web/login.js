@@ -207,6 +207,10 @@ define([
 									 *
 									 * Также обратите внимание, что полномочия «profile»
 									 * не дают доступ к почтовому индексу.
+									 *
+									 * 2016-06-05
+									 * Мы используем почтовый индекс здесь:
+									 * https://code.dmitry-fedyuk.com/m2e/login-and-pay-with-amazon/blob/42dcb17/Customer.php#L43
 									 */
 									,'postal_code'
 								].join(' ')

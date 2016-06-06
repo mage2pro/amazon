@@ -28,6 +28,12 @@ use Dfe\LPA\Setup\InstallSchema;
  * 2016-06-05
  * Проверку на подобные сбои мы производим в методе @see \Dfe\LPA\Customer::validate()
  *
+ * 2016-06-06
+ * Заметил, что если сменить имя владельца тестовой учётной записи в Amazon Seller Central,
+ * то запросы к https://api.sandbox.amazon.com/user/profile продолжают возвращать прежнее имя.
+ * https://mage2.pro/t/1739
+ * http://sellercentral.amazon.com/gp/contact-us/contact-amazon-form.html?caseID=1769644581
+ *
  * @method \Dfe\LPA\Customer c()
  */
 class Index extends ReturnT {

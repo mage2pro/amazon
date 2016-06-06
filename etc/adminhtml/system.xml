@@ -224,6 +224,19 @@
 							<backend_model>Df\Config\Backend\Checkbox</backend_model>
 							<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button on the «<b>Customer Login</b>» page, above the standard «<b>Registered Customers</b>» and «<b>New Customers</b>» blocks.]]></comment>
 						</field>
+						<field
+							id='registratonPage'
+							translate='label'
+							type='Df\Framework\Data\Form\Element\Checkbox'
+							sortOrder='3'
+							showInDefault='1'
+							showInWebsite='1'
+							showInStore='1'
+						>
+							<label>Show on Registration Page?</label>
+							<backend_model>Df\Config\Backend\Checkbox</backend_model>
+							<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button on the «<b>Create New Customer Account</b>» page, above the standard registration form.]]></comment>
+						</field>
 					</group>
 				</group>
             </group>

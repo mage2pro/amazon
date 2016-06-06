@@ -85,6 +85,17 @@ class Index extends ReturnT {
 	protected function needCreateAddress() {return false;}
 
 	/**
+	 * 2016-06-06
+	 * @override
+	 * @see \Df\Customer\External\ReturnT::postProcess()
+	 * @used-by \Df\Customer\External\ReturnT::execute()
+	 * @return void
+	 */
+	protected function postProcess() {
+		df_cookie_m()->setPublicCookie('df_need_update_customer_data', 1, df_cookie_metadata_standard());
+	}
+
+	/**
 	 * 2016-06-05
 	 * https://code.dmitry-fedyuk.com/m2e/login-and-pay-with-amazon/blob/4f911a0d/view/frontend/web/login.js#L232
 	 * @override

@@ -16,17 +16,22 @@ class Login extends AbstractBlock {
 	 */
 	protected function _toHtml() {
 		return
-			df_customer_logged_in() || !S::s()->enable()
+			!S::s()->enable()
 			? ''
-			: df_x_magento_init('Dfe_LPA/login', $this['jsOptions'] + [
-				'clientId' => C::s()->id()
-				,'domId' => $this->domId()
-				,'merchantId' => S::s()->merchantId()
-			 	,'redirect' => df_url('dfe-lpa/login', ['_secure' => true])
-				,'sandbox' => S::s()->test()
-			])
-			//. df_link_inline(df_asset_name('Dfe_LPA::login.css'))
-			. df_tag('div', ['id' => $this->domId()])
+			: (
+				df_customer_logged_in()
+				? df_x_magento_init('Dfe_LPA/invalidate')
+				: df_x_magento_init('Dfe_LPA/login', $this['jsOptions'] + [
+					'clientId' => C::s()->id()
+					,'domId' => $this->domId()
+					,'loggedIn' => df_customer_logged_in()
+					,'merchantId' => S::s()->merchantId()
+					,'redirect' => df_url('dfe-lpa/login', ['_secure' => true])
+					,'sandbox' => S::s()->test()
+				])
+				//. df_link_inline(df_asset_name('Dfe_LPA::login.css'))
+				. df_tag('div', ['id' => $this->domId()])
+			)
 		;
 	}
 

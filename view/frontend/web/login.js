@@ -1,7 +1,7 @@
 // 2016-06-03
 define([
-	'jquery', 'df'
-], function($, df) {return (
+	'jquery', 'df', 'Magento_Customer/js/customer-data'
+], function($, df, customerData) {return (
 	/**
 	 * @param {Object} config
 	 * @param {String} config.clientId
@@ -51,7 +51,6 @@ define([
 				,'js/Widgets.js?sellerId=' + config.merchantId
 			]).join('/');
 			require([widgetUrl], function() {
-				var authRequest;
 				/**
 				 * 2016-06-03
 				 * «Login and Pay with Amazon Integration Guide» → «Widgets» → «Button widgets»
@@ -106,7 +105,7 @@ define([
 						 * 2016-06-04
 						 * https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/javascript_sdk_reference.html#authorize
 						 */
-						authRequest = amazon.Login.authorize(
+						amazon.Login.authorize(
 							{
 								/**
 								 * 2016-06-03

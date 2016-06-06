@@ -38,15 +38,6 @@ use Dfe\LPA\Setup\InstallSchema;
  */
 class Index extends ReturnT {
 	/**
-	 * 2016-06-05
-	 * @override
-	 * @see \Df\Customer\External\ReturnT::addressData()
-	 * @used-by \Df\Customer\External\ReturnT::register()
-	 * @return array(string => mixed)
-	 */
-	protected function addressData() {return ['postcode' => $this->c()->postalCode()];}
-
-	/**
 	 * 2016-06-04
 	 * @override
 	 * @see \Df\Customer\External\ReturnT::customerClass()
@@ -54,6 +45,21 @@ class Index extends ReturnT {
 	 * @return string
 	 */
 	protected function customerClass() {return Customer::class;}
+
+	/**
+	 * 2016-06-06
+	 * Перечень свойств покупателя, которые надо обновить в Magento
+	 * после их изменения в сторонней системе авторизации.
+	 *
+	 * Почтовый индекс здесь обновлять бесполезно:
+	 * несмотря на то, что он отображается в административной таблице покупателей,
+	 * он привязан только к адресу, но не к покупателю.
+	 *
+	 * @see \Df\Customer\External\ReturnT::customerFieldsToSync()
+	 * @used-by \Df\Customer\External\ReturnT::customer()
+	 * @return string[]
+	 */
+	protected function customerFieldsToSync() {return ['firstname' ,'lastname', 'email'];}
 
 	/**
 	 * 2016-06-04

@@ -4,7 +4,22 @@
     xsi:noNamespaceSchemaLocation='urn:magento:module:Df_Config:etc/system_file.xsd'
 >
     <system>
-        <section id='df_payment'>
+        <section
+			id='df_amazon'
+			translate='label'
+			type='text'
+			showInDefault='1'
+			showInWebsite='1'
+			showInStore='1'
+		>
+			<tab>_df</tab>
+			<label>Amazon</label>
+			<class>separator-top</class>
+			<!--
+				2015-10-05
+				https://mage2.pro/t/114
+			-->
+			<resource>Df_Amazon::config</resource>
             <!--
                 2015-09-25
                 1-я и 2-я цифры sortOrder соответствуют порядковому номеру первой буквы модуля
@@ -13,33 +28,20 @@
                 в английском алфавите.
             -->
             <group
-                id='amazon'
+                id='common'
                 translate='label'
                 type='text'
-                sortOrder='1216'
+                sortOrder='1'
                 showInDefault='1'
                 showInWebsite='1'
                 showInStore='1'
             >
-                <label>Login and Pay with Amazon</label>
-                <field
-                    id='enable'
-                    translate='label'
-                    type='Df\Framework\Data\Form\Element\Checkbox'
-                    sortOrder='1'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
-                >
-                    <label>Enable?</label>
-					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-                    <comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/login-and-pay-with-amazon' target='_blank'>Login and Pay with Amazon</a>» extension?]]></comment>
-                </field>
+                <label>Common</label>
 				<field
 					id='test'
 					translate='label'
 					type='Df\Framework\Data\Form\Element\Checkbox'
-					sortOrder='2'
+					sortOrder='1'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -50,13 +52,12 @@
 <li><a href='https://mage2.pro/t/1696' target='_blank'>How to switch a merchant account to the Sandbox View?</a></li>
 <li><a href='https://mage2.pro/t/1748' target='_blank'>What is the difference between the Sandbox and Production modes for «<b>Login with Amazon</b>» service?</a></li></ul>
 ]]></comment>
-					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
 					id='merchantId'
 					translate='label'
 					type='text'
-					sortOrder='3'
+					sortOrder='2'
 					showInDefault='1'
 					showInWebsite='0'
 					showInStore='0'
@@ -69,45 +70,28 @@
 					</depends>
 				</field>
 				<field
-					id='webhook'
-					translate='label'
-					type='Df\Framework\Data\Form\Element\Webhook'
-					dfWebhook_routePath='df-amazon'
-					dfWebhook_requireHTTPS='true'
-					sortOrder='4'
-					showInDefault='1'
-					showInWebsite='0'
-					showInStore='0'
-				>
-					<label>Notifications URL</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/1717' target='_blank'>How to setup the Instant Notifications? </a>]]></comment>
-					<depends><field id='enable'>1</field></depends>
-				</field>
-				<field
 					id='allowedJavaScriptOrigin'
 					translate='label'
 					type='Df\Amazon\Element\JsOrigin'
 					dfWebhook_requireHTTPS='true'
-					sortOrder='4'
+					sortOrder='3'
 					showInDefault='1'
 					showInWebsite='0'
 					showInStore='0'
 				>
 					<label>Allowed JavaScript Origins</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/1738' target='_blank'>Set it in your Amazon Seller account.</a>]]></comment>
-					<depends><field id='enable'>1</field></depends>
 				</field>
 				<group
 					id='mws'
 					translate='label'
 					type='text'
-					sortOrder='5'
+					sortOrder='4'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
 				>
 					<label>Marketplace Web Service Credentials</label>
-					<depends><field id='enable'>1</field></depends>
 					<field
 						id='accessKeyId'
 						translate='label'
@@ -120,9 +104,6 @@
 						<label>Access Key ID</label>
 						<comment><![CDATA[<a href='https://mage2.pro/t/1713' target='_blank'>Where to find it?</a>]]></comment>
 						<validate>required-entry validate-length maximum-length-20 minimum-length-20</validate>
-						<depends>
-							<field id='enable'>1</field>
-						</depends>
 					</field>
 					<field
 						id='secretAccessKey'
@@ -137,112 +118,162 @@
 						<comment><![CDATA[<a href='https://mage2.pro/t/1714' target='_blank'>Where to find it?</a>]]></comment>
 						<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 						<validate>required-entry validate-length maximum-length-40 minimum-length-40</validate>
-						<depends>
-							<field id='enable'>1</field>
-						</depends>
 					</field>
 				</group>
-				<group
-					id='login'
+            </group>
+			<group
+				id='login'
+				translate='label'
+				type='text'
+				sortOrder='2'
+				showInDefault='1'
+				showInWebsite='1'
+				showInStore='1'
+			>
+				<label>Login</label>
+				<field
+					id='enable'
 					translate='label'
-					type='text'
-					sortOrder='6'
+					type='Df\Framework\Data\Form\Element\Checkbox'
+					sortOrder='1'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Login with Amazon</label>
+					<label>Enable?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/amazon-login' target='_blank'>Login with Amazon</a>» extension?]]></comment>
+				</field>
+				<group
+					id='credentials'
+					translate='label'
+					type='text'
+					sortOrder='1'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
 					<depends><field id='enable'>1</field></depends>
-					<group
-						id='credentials'
+					<label>Credentials</label>
+					<field
+						id='id'
 						translate='label'
 						type='text'
+						sortOrder='1'
+						showInDefault='1'
+						showInWebsite='0'
+						showInStore='0'
+					>
+						<label>Client ID</label>
+						<comment><![CDATA[<a href='https://mage2.pro/t/1705' target='_blank'>Where to find it?</a>]]></comment>
+						<validate>required-entry validate-length maximum-length-61 minimum-length-61</validate>
+					</field>
+					<field
+						id='secret'
+						translate='label'
+						type='obscure'
+						sortOrder='2'
+						showInDefault='1'
+						showInWebsite='0'
+						showInStore='0'
+					>
+						<label>Client Secret</label>
+						<comment><![CDATA[<a href='https://mage2.pro/t/1706' target='_blank'>Where to find it?</a>]]></comment>
+						<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+						<validate>required-entry validate-length maximum-length-64 minimum-length-64</validate>
+					</field>
+				</group>
+				<group
+					id='locations'
+					translate='label'
+					type='text'
+					sortOrder='2'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<depends><field id='enable'>1</field></depends>
+					<label>Button Locations</label>
+					<field
+						id='header'
+						translate='label'
+						type='Df\Framework\Data\Form\Element\Checkbox'
 						sortOrder='1'
 						showInDefault='1'
 						showInWebsite='1'
 						showInStore='1'
 					>
-						<label>Credentials</label>
-						<field
-							id='id'
-							translate='label'
-							type='text'
-							sortOrder='1'
-							showInDefault='1'
-							showInWebsite='0'
-							showInStore='0'
-						>
-							<label>Client ID</label>
-							<comment><![CDATA[<a href='https://mage2.pro/t/1705' target='_blank'>Where to find it?</a>]]></comment>
-							<validate>required-entry validate-length maximum-length-61 minimum-length-61</validate>
-						</field>
-						<field
-							id='secret'
-							translate='label'
-							type='obscure'
-							sortOrder='2'
-							showInDefault='1'
-							showInWebsite='0'
-							showInStore='0'
-						>
-							<label>Client Secret</label>
-							<comment><![CDATA[<a href='https://mage2.pro/t/1706' target='_blank'>Where to find it?</a>]]></comment>
-							<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-							<validate>required-entry validate-length maximum-length-64 minimum-length-64</validate>
-						</field>
-					</group>
-					<group
-						id='locations'
+						<label>Show in Header?</label>
+						<backend_model>Df\Config\Backend\Checkbox</backend_model>
+						<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button in the header of the frontend pages, near to the standard «<b>Sign In</b>» and «<b>Create an Account</b>» links.]]></comment>
+					</field>
+					<field
+						id='loginPage'
 						translate='label'
-						type='text'
+						type='Df\Framework\Data\Form\Element\Checkbox'
 						sortOrder='2'
 						showInDefault='1'
 						showInWebsite='1'
 						showInStore='1'
 					>
-						<label>Button Locations</label>
-						<field
-							id='header'
-							translate='label'
-							type='Df\Framework\Data\Form\Element\Checkbox'
-							sortOrder='1'
-							showInDefault='1'
-							showInWebsite='1'
-							showInStore='1'
-						>
-							<label>Show in Header?</label>
-							<backend_model>Df\Config\Backend\Checkbox</backend_model>
-							<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button in the header of the frontend pages, near to the standard «<b>Sign In</b>» and «<b>Create an Account</b>» links.]]></comment>
-						</field>
-						<field
-							id='loginPage'
-							translate='label'
-							type='Df\Framework\Data\Form\Element\Checkbox'
-							sortOrder='2'
-							showInDefault='1'
-							showInWebsite='1'
-							showInStore='1'
-						>
-							<label>Show on Login Page?</label>
-							<backend_model>Df\Config\Backend\Checkbox</backend_model>
-							<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button on the «<b>Customer Login</b>» page, above the standard «<b>Registered Customers</b>» and «<b>New Customers</b>» blocks.]]></comment>
-						</field>
-						<field
-							id='registratonPage'
-							translate='label'
-							type='Df\Framework\Data\Form\Element\Checkbox'
-							sortOrder='3'
-							showInDefault='1'
-							showInWebsite='1'
-							showInStore='1'
-						>
-							<label>Show on Registration Page?</label>
-							<backend_model>Df\Config\Backend\Checkbox</backend_model>
-							<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button on the «<b>Create New Customer Account</b>» page, above the standard registration form.]]></comment>
-						</field>
-					</group>
+						<label>Show on Login Page?</label>
+						<backend_model>Df\Config\Backend\Checkbox</backend_model>
+						<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button on the «<b>Customer Login</b>» page, above the standard «<b>Registered Customers</b>» and «<b>New Customers</b>» blocks.]]></comment>
+					</field>
+					<field
+						id='registratonPage'
+						translate='label'
+						type='Df\Framework\Data\Form\Element\Checkbox'
+						sortOrder='3'
+						showInDefault='1'
+						showInWebsite='1'
+						showInStore='1'
+					>
+						<label>Show on Registration Page?</label>
+						<backend_model>Df\Config\Backend\Checkbox</backend_model>
+						<comment><![CDATA[Shows the «<b>Login with Amazon</b>» button on the «<b>Create New Customer Account</b>» page, above the standard registration form.]]></comment>
+					</field>
 				</group>
-            </group>
+			</group>
+			<group
+				id='payments'
+				translate='label'
+				type='text'
+				sortOrder='3'
+				showInDefault='1'
+				showInWebsite='1'
+				showInStore='1'
+			>
+				<label>Payments</label>
+				<field
+					id='enable'
+					translate='label'
+					type='Df\Framework\Data\Form\Element\Checkbox'
+					sortOrder='1'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Enable?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/amazon-payments' target='_blank'>Amazon Payments</a>» extension?]]></comment>
+				</field>
+				<field
+					id='webhook'
+					translate='label'
+					type='Df\Framework\Data\Form\Element\Webhook'
+					dfWebhook_routePath='df-amazon'
+					dfWebhook_requireHTTPS='true'
+					sortOrder='2'
+					showInDefault='1'
+					showInWebsite='0'
+					showInStore='0'
+				>
+					<label>Notifications URL</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/1717' target='_blank'>How to setup the Instant Notifications? </a>]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+			</group>
         </section>
     </system>
 </config>

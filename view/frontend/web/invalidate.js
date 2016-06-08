@@ -9,7 +9,9 @@ define([
 	function(config) {
 		if ($.cookieStorage.get('df_need_update_customer_data')) {
 			customerData.reload(['customer'], true);
-			$.cookieStorage.set('df_need_update_customer_data', null)
+			// 2016-06-07
+			// https://github.com/julien-maurel/jQuery-Storage-API#remove
+			$.cookieStorage.remove('df_need_update_customer_data');
 		}
 	});
 });

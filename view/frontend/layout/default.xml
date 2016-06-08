@@ -10,9 +10,9 @@
 				above the standard «Registered Customers<» and «New Customers» blocks.
 			-->
 			<block
-				class='Dfe\LPA\Block\Login'
-				name='dfe.lpa.login-header'
-				ifconfig='df_payment/lpa/login/locations/header'
+				class='Df\Amazon\Block\Login'
+				name='df.amazon.login-header'
+				ifconfig='df_payment/amazon/login/locations/header'
 				before='-'
 			>
 				<arguments>

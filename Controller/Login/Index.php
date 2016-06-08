@@ -1,8 +1,8 @@
 <?php
-namespace Dfe\LPA\Controller\Login;
+namespace Df\Amazon\Controller\Login;
 use Df\Customer\External\ReturnT;
-use Dfe\LPA\Customer;
-use Dfe\LPA\Setup\InstallSchema;
+use Df\Amazon\Customer;
+use Df\Amazon\Setup\InstallSchema;
 /**
  * 2016-06-04
  * «Integrate with Your Existing Account System»
@@ -26,7 +26,7 @@ use Dfe\LPA\Setup\InstallSchema;
  * &state=208257577ll0975l93l2l59l895857093449424
  *
  * 2016-06-05
- * Проверку на подобные сбои мы производим в методе @see \Dfe\LPA\Customer::validate()
+ * Проверку на подобные сбои мы производим в методе @see \Df\Amazon\Customer::validate()
  *
  * 2016-06-06
  * Заметил, что если сменить имя владельца тестовой учётной записи в Amazon Seller Central,
@@ -34,7 +34,7 @@ use Dfe\LPA\Setup\InstallSchema;
  * https://mage2.pro/t/1739
  * http://sellercentral.amazon.com/gp/contact-us/contact-amazon-form.html?caseID=1769644581
  *
- * @method \Dfe\LPA\Customer c()
+ * @method \Df\Amazon\Customer c()
  */
 class Index extends ReturnT {
 	/**

@@ -10,9 +10,9 @@
 				near to the standard «Sign In» and «Create an Account» links.
 			-->
 			<block
-				class='Dfe\LPA\Block\Login'
-				name='dfe.lpa.login-customer.account.login'
-				ifconfig='df_payment/lpa/login/locations/loginPage'
+				class='Df\Amazon\Block\Login'
+				name='df.amazon.login-customer.account.login'
+				ifconfig='df_payment/amazon/login/locations/loginPage'
 				before='-'
 			>
 				<arguments>

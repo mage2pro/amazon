@@ -4,8 +4,8 @@
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd"
 >
 	<router id='standard'>
-		<route id='Dfe_LPA' frontName='dfe-lpa'>
-			<module name='Dfe_LPA'/>
+		<route id='Df_Amazon' frontName='df-amazon'>
+			<module name='Df_Amazon'/>
 		</route>
 	</router>
 </config>

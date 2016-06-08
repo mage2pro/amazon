@@ -24,8 +24,8 @@ define([
 		 * Почему-то кнопка в шапке инициализируется дважды.
 		 * Это происходит только в шапке, другие кнопки инициализируются правильно, единократно.
 		 */
-		if (!$container.hasClass('dfe-amazon-login')) {
-			$container.addClass('dfe-amazon-login');
+		if (!$container.hasClass('df-amazon-login')) {
+			$container.addClass('df-amazon-login');
 			if (df.defined(config.wrapper)) {
 				$container.wrap(config.wrapper);
 			}

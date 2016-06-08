@@ -13,7 +13,7 @@
                 в английском алфавите.
             -->
             <group
-                id='lpa'
+                id='amazon'
                 translate='label'
                 type='text'
                 sortOrder='1216'
@@ -72,7 +72,7 @@
 					id='webhook'
 					translate='label'
 					type='Df\Framework\Data\Form\Element\Webhook'
-					dfWebhook_routePath='dfe-lpa'
+					dfWebhook_routePath='df-amazon'
 					dfWebhook_requireHTTPS='true'
 					sortOrder='4'
 					showInDefault='1'
@@ -86,7 +86,7 @@
 				<field
 					id='allowedJavaScriptOrigin'
 					translate='label'
-					type='Dfe\LPA\Element\JsOrigin'
+					type='Df\Amazon\Element\JsOrigin'
 					dfWebhook_requireHTTPS='true'
 					sortOrder='4'
 					showInDefault='1'

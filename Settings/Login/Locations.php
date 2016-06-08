@@ -1,5 +1,5 @@
 <?php
-namespace Dfe\LPA\Settings\Login;
+namespace Df\Amazon\Settings\Login;
 use Magento\Framework\App\ScopeInterface as S;
 /**
  * 2016-06-02
@@ -12,7 +12,7 @@ class Locations extends \Df\Core\Settings {
 	 * @used-by \Df\Core\Settings::v()
 	 * @return string
 	 */
-	protected function prefix() {return 'df_payment/lpa/login/locations/';}
+	protected function prefix() {return 'df_payment/amazon/login/locations/';}
 
 	/** @return self */
 	public static function s() {static $r; return $r ? $r : $r = df_o(__CLASS__);}

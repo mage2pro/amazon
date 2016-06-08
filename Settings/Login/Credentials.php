@@ -1,5 +1,5 @@
 <?php
-namespace Dfe\LPA\Settings\Login;
+namespace Df\Amazon\Settings\Login;
 use Magento\Framework\App\ScopeInterface as S;
 /**
  * 2016-06-02
@@ -28,7 +28,7 @@ class Credentials extends \Df\Core\Settings {
 	 * @used-by \Df\Core\Settings::v()
 	 * @return string
 	 */
-	protected function prefix() {return 'df_payment/lpa/login/credentials/';}
+	protected function prefix() {return 'df_payment/amazon/login/credentials/';}
 
 	/** @return self */
 	public static function s() {static $r; return $r ? $r : $r = df_o(__CLASS__);}

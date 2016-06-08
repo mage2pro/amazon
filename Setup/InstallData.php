@@ -1,5 +1,5 @@
 <?php
-namespace Dfe\LPA\Setup;
+namespace Df\Amazon\Setup;
 class InstallData extends \Df\Customer\External\Install\Data {
 	/**
 	 * 2016-06-05

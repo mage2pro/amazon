@@ -1,6 +1,6 @@
 <?php
-namespace Dfe\LPA;
-use Dfe\LPA\Settings\Login;
+namespace Df\Amazon;
+use Df\Amazon\Settings\Login;
 use Magento\Framework\App\ScopeInterface as S;
 /**
  * 2016-06-02
@@ -22,7 +22,7 @@ class Settings extends \Df\Core\Settings {
 	public function init() {
 		if (!isset($this->{__METHOD__})) {
 			if (df_is_frontend()) {
-				$r = df_block_r(null, [], 'Dfe_LPA::init');
+				$r = df_block_r(null, [], 'Df_Amazon::init');
 			}
 			$this->{__METHOD__} = true;
 		}
@@ -53,7 +53,7 @@ class Settings extends \Df\Core\Settings {
 	 * @used-by \Df\Core\Settings::v()
 	 * @return string
 	 */
-	protected function prefix() {return 'df_payment/lpa/';}
+	protected function prefix() {return 'df_payment/amazon/';}
 
 	/** @return self */
 	public static function s() {static $r; return $r ? $r : $r = df_o(__CLASS__);}

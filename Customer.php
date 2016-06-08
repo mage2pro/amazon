@@ -1,7 +1,7 @@
 <?php
-namespace Dfe\LPA;
-use Dfe\LPA\Settings as S;
-use Dfe\LPA\Settings\Login\Credentials as C;
+namespace Df\Amazon;
+use Df\Amazon\Settings as S;
+use Df\Amazon\Settings\Login\Credentials as C;
 class Customer extends \Df\Customer\External\Customer {
 	/**
 	 * 2016-06-04
@@ -39,7 +39,7 @@ class Customer extends \Df\Customer\External\Customer {
 	 * 2016-06-05
 	 * Мы запрашиваем у посетителя разрешение на получение его почтового индекса здесь:
 	 * https://code.dmitry-fedyuk.com/m2e/login-and-pay-with-amazon/blob/42dcb17/view/frontend/web/login.js#L211
-	 * @used-by \Dfe\LPA\Controller\Login\Index::addressData()
+	 * @used-by \Df\Amazon\Controller\Login\Index::addressData()
 	 * @return string|null
 	 */
 	public function postalCode() {return $this->p('postal_code');}
@@ -252,14 +252,14 @@ class Customer extends \Df\Customer\External\Customer {
 	/**
 	 * 2016-06-04
 	 * @var string
-	 * @used-by \Dfe\LPA\Customer::url()
+	 * @used-by \Df\Amazon\Customer::url()
 	 */
 	private $_urlBase;
 
 	/**
 	 * 2016-06-04
 	 * @var string
-	 * @used-by \Dfe\LPA\Customer::url()
+	 * @used-by \Df\Amazon\Customer::url()
 	 */
 	private $_urlQuery;
 }

@@ -1,7 +1,7 @@
 <?php
-namespace Dfe\LPA\Block;
-use Dfe\LPA\Settings as S;
-use Dfe\LPA\Settings\Login\Credentials as C;
+namespace Df\Amazon\Block;
+use Df\Amazon\Settings as S;
+use Df\Amazon\Settings\Login\Credentials as C;
 use Magento\Framework\View\Element\AbstractBlock;
 /**
  * 2016-06-02
@@ -20,16 +20,16 @@ class Login extends AbstractBlock {
 			? ''
 			: (
 				df_customer_logged_in()
-				? df_x_magento_init('Dfe_LPA/invalidate')
-				: df_x_magento_init('Dfe_LPA/login', $this['jsOptions'] + [
+				? df_x_magento_init('Df_Amazon/invalidate')
+				: df_x_magento_init('Df_Amazon/login', $this['jsOptions'] + [
 					'clientId' => C::s()->id()
 					,'domId' => $this->domId()
 					,'loggedIn' => df_customer_logged_in()
 					,'merchantId' => S::s()->merchantId()
-					,'redirect' => df_url('dfe-lpa/login', ['_secure' => true])
+					,'redirect' => df_url('df-amazon/login', ['_secure' => true])
 					,'sandbox' => S::s()->test()
 				])
-				//. df_link_inline(df_asset_name('Dfe_LPA::login.css'))
+				//. df_link_inline(df_asset_name('Df_Amazon::login.css'))
 				. df_tag('div', ['id' => $this->domId()])
 			)
 		;
@@ -41,7 +41,7 @@ class Login extends AbstractBlock {
 	 */
 	private function domId() {
 		if (!isset($this->{__METHOD__})) {
-			$this->{__METHOD__} = df_uid(4, 'dfe-amazon-');
+			$this->{__METHOD__} = df_uid(4, 'df-amazon-');
 		}
 		return $this->{__METHOD__};
 	}

@@ -1,5 +1,5 @@
 <?php
-namespace Dfe\LPA\Element;
+namespace Df\Amazon\Element;
 // 2016-05-30
 class JsOrigin extends \Df\Framework\Data\Form\Element\Url {
 	/**

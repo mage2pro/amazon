@@ -1,5 +1,5 @@
 <?php
-namespace Dfe\LPA\Setup;
+namespace Df\Amazon\Setup;
 use Magento\Framework\DB\Adapter;
 class InstallSchema extends \Df\Customer\External\Install\Schema {
 	/**
@@ -25,12 +25,12 @@ class InstallSchema extends \Df\Customer\External\Install\Schema {
 	 * https://mage2.pro/t/129
 	 * Поэтому приходиться укладываться в 30.
 	 */
-	const F__ID = 'dfe_amazon__id';
+	const F__ID = 'df_amazon__id';
 
 	/**
 	 * 2016-06-05
 	 * «The person's full name»
 	 * https://developers.facebook.com/docs/graph-api/reference/user
 	 */
-	const F__NAME = 'dfe_amazon__name';
+	const F__NAME = 'df_amazon__name';
 }

@@ -1,9 +1,9 @@
 {
-	"name": "mage2pro/login-and-pay-with-amazon"
+	"name": "mage2pro/amazon"
 	,"version": "0.0.1"
-	,"description": "The «Login and Pay with Amazon» extension."
+	,"description": "A core package for the Amazon APIs."
 	,"type": "magento2-module"
-	,"homepage": "https://mage2.pro/c/extensions/login-and-pay-with-amazon"
+	,"homepage": "https://mage2.pro/c/extensions"
 	,"license": "proprietary"
 	,"authors": [{
 		"name": "Dmitry Fedyuk",
@@ -12,8 +12,8 @@
 		"role": "Developer"
 	}]
 	,"require": {
-		"mage2pro/core": "^1.3.6"
+		"mage2pro/core": "^1.3.14"
 		, "amzn/login-and-pay-with-amazon-sdk-php": "*"
 	}
-	,"autoload": {"files": ["registration.php"], "psr-4": {"Dfe\\LPA\\": ""}}
+	,"autoload": {"files": ["registration.php"], "psr-4": {"Dfe\\Amazon\\": ""}}
 }

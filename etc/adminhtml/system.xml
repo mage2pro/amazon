@@ -59,8 +59,8 @@
 					type='text'
 					sortOrder='2'
 					showInDefault='1'
-					showInWebsite='0'
-					showInStore='0'
+					showInWebsite='1'
+					showInStore='1'
 				>
 					<label>Merchant ID</label>
 					<comment><![CDATA[«<b>Merchant ID</b>» (also known as «<b>Seller ID</b>», «<b>Merchant Token</b>») of your Amazon Seller account.<br/><a href='https://mage2.pro/t/1708' target='_blank'>Where to find it?</a>]]></comment>
@@ -76,8 +76,8 @@
 					dfWebhook_requireHTTPS='true'
 					sortOrder='3'
 					showInDefault='1'
-					showInWebsite='0'
-					showInStore='0'
+					showInWebsite='1'
+					showInStore='1'
 				>
 					<label>Allowed JavaScript Origins</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/1738' target='_blank'>Set it in your Amazon Seller account.</a>]]></comment>
@@ -98,8 +98,8 @@
 						type='text'
 						sortOrder='1'
 						showInDefault='1'
-						showInWebsite='0'
-						showInStore='0'
+						showInWebsite='1'
+						showInStore='1'
 					>
 						<label>Access Key ID</label>
 						<comment><![CDATA[<a href='https://mage2.pro/t/1713' target='_blank'>Where to find it?</a>]]></comment>
@@ -111,8 +111,8 @@
 						type='obscure'
 						sortOrder='2'
 						showInDefault='1'
-						showInWebsite='0'
-						showInStore='0'
+						showInWebsite='1'
+						showInStore='1'
 					>
 						<label>Secret Access Key</label>
 						<comment><![CDATA[<a href='https://mage2.pro/t/1714' target='_blank'>Where to find it?</a>]]></comment>
@@ -161,8 +161,8 @@
 						type='text'
 						sortOrder='1'
 						showInDefault='1'
-						showInWebsite='0'
-						showInStore='0'
+						showInWebsite='1'
+						showInStore='1'
 					>
 						<label>Client ID</label>
 						<comment><![CDATA[<a href='https://mage2.pro/t/1705' target='_blank'>Where to find it?</a>]]></comment>
@@ -174,8 +174,8 @@
 						type='obscure'
 						sortOrder='2'
 						showInDefault='1'
-						showInWebsite='0'
-						showInStore='0'
+						showInWebsite='1'
+						showInStore='1'
 					>
 						<label>Client Secret</label>
 						<comment><![CDATA[<a href='https://mage2.pro/t/1706' target='_blank'>Where to find it?</a>]]></comment>
@@ -266,8 +266,8 @@
 					dfWebhook_requireHTTPS='true'
 					sortOrder='2'
 					showInDefault='1'
-					showInWebsite='0'
-					showInStore='0'
+					showInWebsite='1'
+					showInStore='1'
 				>
 					<label>Notifications URL</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/1717' target='_blank'>How to setup the Instant Notifications? </a>]]></comment>

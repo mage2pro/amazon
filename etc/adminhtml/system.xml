@@ -40,7 +40,7 @@
 				<field
 					id='test'
 					translate='label'
-					type='Df\Framework\Data\Form\Element\Checkbox'
+					type='Df\Framework\Form\Element\Checkbox'
 					sortOrder='1'
 					showInDefault='1'
 					showInWebsite='1'
@@ -134,7 +134,7 @@
 				<field
 					id='enable'
 					translate='label'
-					type='Df\Framework\Data\Form\Element\Checkbox'
+					type='Df\Framework\Form\Element\Checkbox'
 					sortOrder='1'
 					showInDefault='1'
 					showInWebsite='1'
@@ -197,7 +197,7 @@
 					<field
 						id='header'
 						translate='label'
-						type='Df\Framework\Data\Form\Element\Checkbox'
+						type='Df\Framework\Form\Element\Checkbox'
 						sortOrder='1'
 						showInDefault='1'
 						showInWebsite='1'
@@ -210,7 +210,7 @@
 					<field
 						id='loginPage'
 						translate='label'
-						type='Df\Framework\Data\Form\Element\Checkbox'
+						type='Df\Framework\Form\Element\Checkbox'
 						sortOrder='2'
 						showInDefault='1'
 						showInWebsite='1'
@@ -223,7 +223,7 @@
 					<field
 						id='registratonPage'
 						translate='label'
-						type='Df\Framework\Data\Form\Element\Checkbox'
+						type='Df\Framework\Form\Element\Checkbox'
 						sortOrder='3'
 						showInDefault='1'
 						showInWebsite='1'
@@ -248,7 +248,7 @@
 				<field
 					id='enable'
 					translate='label'
-					type='Df\Framework\Data\Form\Element\Checkbox'
+					type='Df\Framework\Form\Element\Checkbox'
 					sortOrder='1'
 					showInDefault='1'
 					showInWebsite='1'
@@ -261,7 +261,7 @@
 				<field
 					id='webhook'
 					translate='label'
-					type='Df\Framework\Data\Form\Element\Webhook'
+					type='Df\Framework\Form\Element\Webhook'
 					dfWebhook_routePath='df-amazon'
 					dfWebhook_requireHTTPS='true'
 					sortOrder='2'

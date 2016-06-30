@@ -1,12 +1,12 @@
 <?php
 namespace Df\Amazon\Element;
 // 2016-05-30
-class JsOrigin extends \Df\Framework\Data\Form\Element\Url {
+class JsOrigin extends \Df\Framework\Form\Element\Url {
 	/**
 	 * 2016-05-31
 	 * @override
-	 * @see \Df\Framework\Data\Form\Element\Url::messageForThirdPartyLocalhost()
-	 * @used-by \Df\Framework\Data\Form\Element\Url::getElementHtml()
+	 * @see \Df\Framework\Form\Element\Url::messageForThirdPartyLocalhost()
+	 * @used-by \Df\Framework\Form\Element\Url::getElementHtml()
 	 * @return string
 	 */
 	protected function messageForThirdPartyLocalhost() {return $this->messageForOthers();}
@@ -14,7 +14,7 @@ class JsOrigin extends \Df\Framework\Data\Form\Element\Url {
 	/**
 	 * 2016-05-31
 	 * @override
-	 * @see \Df\Framework\Data\Form\Element\Url::url()
+	 * @see \Df\Framework\Form\Element\Url::url()
 	 * @return string
 	 */
 	protected function url() {
@@ -27,8 +27,8 @@ class JsOrigin extends \Df\Framework\Data\Form\Element\Url {
 	/**
 	 * 2016-05-31
 	 * @override
-	 * @see \Df\Framework\Data\Form\Element\Url::urlForMyLocalPc()
-	 * @used-by \Df\Framework\Data\Form\Element\Url::url()
+	 * @see \Df\Framework\Form\Element\Url::urlForMyLocalPc()
+	 * @used-by \Df\Framework\Form\Element\Url::url()
 	 * @return string
 	 */
 	protected function urlForMyLocalPc() {return $this->urlForOthers();}

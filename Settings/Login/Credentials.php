@@ -4,6 +4,7 @@ use Magento\Framework\App\ScopeInterface as S;
 /**
  * 2016-06-02
  * «Mage2.PRO» → «Login and Pay with Amazon» → «Login with Amazon» → «Credentials»
+ * @method static Credentials s()
  */
 class Credentials extends \Df\Core\Settings {
 	/**
@@ -29,9 +30,6 @@ class Credentials extends \Df\Core\Settings {
 	 * @return string
 	 */
 	protected function prefix() {return 'df_payment/amazon/login/credentials/';}
-
-	/** @return self */
-	public static function s() {static $r; return $r ? $r : $r = df_o(__CLASS__);}
 }
 
 

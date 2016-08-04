@@ -11,14 +11,6 @@ use Magento\Framework\App\ScopeInterface as S;
 class Settings extends \Df\Core\Settings {
 	/**
 	 * 2016-06-02
-	 * «Enable?»
-	 * @param null|string|int|S $s [optional]
-	 * @return bool
-	 */
-	public function enable($s = null) {return $this->b(__FUNCTION__, $s);}
-
-	/**
-	 * 2016-06-02
 	 * @return void
 	 */
 	public function init() {
@@ -52,6 +44,7 @@ class Settings extends \Df\Core\Settings {
 	/**
 	 * 2016-06-02
 	 * @override
+	 * @see \Df\Core\Settings::prefix()
 	 * @used-by \Df\Core\Settings::v()
 	 * @return string
 	 */

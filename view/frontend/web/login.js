@@ -45,11 +45,11 @@ define([
 			 *https://github.com/amzn/amazon-payments-magento-plugin/blob/v1.4.2/app/code/community/Amazon/Payments/Block/Script.php#L56
 			 */
 			/** @type {String} */
-			var widgetUrl = df.a.clean([
+			var widgetUrl = df.a.ccClean('/', [
 				'https://static-na.payments-amazon.com/OffAmazonPayments/us'
 				,config.sandbox ? 'sandbox' : null
 				,'js/Widgets.js?sellerId=' + config.merchantId
-			]).join('/');
+			]);
 			require([widgetUrl], function() {
 				/**
 				 * 2016-06-03

@@ -26,7 +26,7 @@ define([
 		 */
 		if (!$container.hasClass('df-amazon-login')) {
 			$container.addClass('df-amazon-login');
-			if (df.defined(config.wrapper)) {
+			if (df.d(config.wrapper)) {
 				$container.wrap(config.wrapper);
 			}
 			window.onAmazonLoginReady = function() {
@@ -45,7 +45,7 @@ define([
 			 *https://github.com/amzn/amazon-payments-magento-plugin/blob/v1.4.2/app/code/community/Amazon/Payments/Block/Script.php#L56
 			 */
 			/** @type {String} */
-			var widgetUrl = df.array.clean([
+			var widgetUrl = df.a.clean([
 				'https://static-na.payments-amazon.com/OffAmazonPayments/us'
 				,config.sandbox ? 'sandbox' : null
 				,'js/Widgets.js?sellerId=' + config.merchantId
@@ -259,10 +259,10 @@ define([
 				// Помещаем это именно сюда, чтобы стили не применялись
 				// раньше чем кнопка будет построена.
 				// К сожалению, у кнопки не нашёл оповещения о завершении её построения.
-				if (df.defined(config.style)) {
+				if (df.d(config.style)) {
 					$container.css($.parseJSON(config.style));
 				}
-				if (df.defined(config.css) && $.isPlainObject(config.css)) {
+				if (df.d(config.css) && $.isPlainObject(config.css)) {
 					$.each(config.css, function(selector, css) {
 						$(selector).css($.parseJSON(css));
 					});

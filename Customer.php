@@ -239,7 +239,7 @@ class Customer extends \Df\Customer\External\Customer {
 	 */
 	private function url($path) {
 		if (!isset($this->_urlBase)) {
-			$this->_urlBase = df_cc_clean('.',
+			$this->_urlBase = df_ccc('.',
 				'https://api', S::s()->test() ? 'sandbox' : null, 'amazon.com/'
 			);
 		}

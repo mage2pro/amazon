@@ -56,7 +56,7 @@ class Login extends AbstractBlock {
 	 * @return string
 	 */
 	private function widgetUrl() {
-		return df_cc_url(
+		return df_cc_path(
 			'https://static-na.payments-amazon.com/OffAmazonPayments/us'
 			,S::s()->test() ? 'sandbox' : null
 			,'js/Widgets.js?sellerId=' . S::s()->merchantId()

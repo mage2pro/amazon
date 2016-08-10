@@ -28,18 +28,16 @@ class Settings extends \Df\Core\Settings {
 	/**
 	 * 2016-06-03
 	 * «Mage2.PRO» → «Payment» → «2Checkout» → «Live API Username»
-	 * @param null|string|int|S $s [optional]
 	 * @return string
 	 */
-	public function merchantId($s = null) {return $this->v(__FUNCTION__, $s);}
+	public function merchantId() {return $this->v();}
 
 	/**
 	 * 2016-06-03
 	 * «Sandbox Mode?»
-	 * @param null|string|int|S $s [optional]
 	 * @return bool
 	 */
-	public function test($s = null) {return $this->b(__FUNCTION__, $s);}
+	public function test() {return $this->b();}
 
 	/**
 	 * 2016-06-02

@@ -10,18 +10,16 @@ class Credentials extends \Df\Core\Settings {
 	/**
 	 * 2016-06-02
 	 * «Client ID»
-	 * @param null|string|int|S $s [optional]
 	 * @return string
 	 */
-	public function id($s = null) {return $this->v(__FUNCTION__, $s);}
+	public function id() {return $this->v();}
 
 	/**
 	 * 2016-06-02
 	 * «Client Secret»
-	 * @param null|string|int|S $s [optional]
 	 * @return string
 	 */
-	public function secret($s = null) {return $this->p(__FUNCTION__, $s);}
+	public function secret() {return $this->p();}
 
 	/**
 	 * 2016-06-02

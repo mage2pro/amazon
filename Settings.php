@@ -8,7 +8,7 @@ use Magento\Framework\App\ScopeInterface as S;
  *
  * @method static Settings s()
  */
-class Settings extends \Df\Core\Settings {
+final class Settings extends \Df\Core\Settings {
 	/**
 	 * 2016-06-02
 	 * @return void

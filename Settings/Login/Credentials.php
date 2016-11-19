@@ -1,6 +1,5 @@
 <?php
 namespace Df\Amazon\Settings\Login;
-use Magento\Framework\App\ScopeInterface as S;
 /**
  * 2016-06-02
  * «Mage2.PRO» → «Login and Pay with Amazon» → «Login with Amazon» → «Credentials»

@@ -56,11 +56,16 @@ class Index extends ReturnT {
 	 * несмотря на то, что он отображается в административной таблице покупателей,
 	 * он привязан только к адресу, но не к покупателю.
 	 *
+	 * 2016-11-21
+	 * Имя решил также не обновлять,
+	 * потому что Amazon может вернуть в качестве имени просто «dfediuk»,
+	 * и тогда мы перетрём в Magento реальное имя покупателя (ранее введённое им в Magento).
+	 *
 	 * @see \Df\Customer\External\ReturnT::customerFieldsToSync()
 	 * @used-by \Df\Customer\External\ReturnT::customer()
 	 * @return string[]
 	 */
-	protected function customerFieldsToSync() {return ['firstname' ,'lastname', 'email'];}
+	protected function customerFieldsToSync() {return ['email'];}
 
 	/**
 	 * 2016-06-04

@@ -6,6 +6,15 @@ class Customer extends \Df\Customer\External\Customer {
 	/**
 	 * 2016-06-04
 	 * @override
+	 * @see \Df\Customer\External\Customer::email()
+	 * @used-by \Df\Customer\External\ReturnT::customerData()
+	 * @return string|null
+	 */
+	public function email() {return $this->p('email');}
+
+	/**
+	 * 2016-06-04
+	 * @override
 	 * @see \Df\Customer\External\Customer::id()
 	 * @used-by \Df\Customer\External\ReturnT::register()
 	 * @return string|null
@@ -100,15 +109,6 @@ class Customer extends \Df\Customer\External\Customer {
 		 */
 		df_assert_eq(C::s()->id(), $this->response('auth/o2/tokeninfo', 'aud'));
 	}
-
-	/**
-	 * 2016-06-04
-	 * @override
-	 * @see \Df\Customer\External\Customer::_email()
-	 * @used-by \Df\Customer\External\Customer::email()
-	 * @return string|null
-	 */
-	protected function _email() {return $this->p('email');}
 
 	/**
 	 * 2016-06-04

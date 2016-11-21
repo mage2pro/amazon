@@ -15,53 +15,28 @@ class Login extends AbstractBlock {
 	 * @return string
 	 */
 	protected function _toHtml() {
-		return
-			!S::s()->enable()
-			? ''
-			: (
-				df_customer_logged_in()
-				? df_x_magento_init('Df_Amazon/invalidate')
-				: df_x_magento_init('Df_Amazon/login', $this['jsOptions'] + [
+		/** @var string $result */
+		if (!S::s()->enable()) {
+			$result = '';
+		}
+		else if (df_customer_logged_in()) {
+			$result = df_x_magento_init('Df_Amazon/invalidate');
+		}
+		else {
+			/** @var string $domId */
+			$domId = df_uid(4, 'df-amazon-');
+			$result =
+				df_x_magento_init('Df_Amazon/login', $this['jsOptions'] + [
 					'clientId' => C::s()->id()
-					,'domId' => $this->domId()
+					,'domId' => $domId
 					,'loggedIn' => df_customer_logged_in()
 					,'merchantId' => S::s()->merchantId()
 					,'redirect' => df_url('df-amazon/login', ['_secure' => true])
 					,'sandbox' => S::s()->test()
 				])
-				//. df_link_inline(df_asset_name('Df_Amazon::login.css'))
-				. df_tag('div', ['id' => $this->domId()])
-			)
-		;
-	}
-
-	/**
-	 * 2016-06-03
-	 * @return string
-	 */
-	private function domId() {
-		if (!isset($this->{__METHOD__})) {
-			$this->{__METHOD__} = df_uid(4, 'df-amazon-');
+				. df_tag('div', ['id' => $domId])
+			;
 		}
-		return $this->{__METHOD__};
-	}
-
-	/** @return string */
-	private function e() {
-		return df_tag('li', [], df_tag('div', ['id' => $this->domId()]));
-	}
-
-	/**
-	 * 2016-06-03
-	 * @return string
-	 */
-	private function widgetUrl() {
-		return df_cc_path(
-			'https://static-na.payments-amazon.com/OffAmazonPayments/us'
-			,S::s()->test() ? 'sandbox' : null
-			,'js/Widgets.js?sellerId=' . S::s()->merchantId()
-		);
+		return $result;
 	}
 }
-
-

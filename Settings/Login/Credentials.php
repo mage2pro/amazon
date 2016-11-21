@@ -27,7 +27,7 @@ class Credentials extends \Df\Core\Settings {
 	 * @used-by \Df\Core\Settings::v()
 	 * @return string
 	 */
-	protected function prefix() {return 'df_payment/amazon/login/credentials/';}
+	protected function prefix() {return 'df_amazon/login/credentials/';}
 }
 
 

@@ -1,7 +1,8 @@
 <?php
 namespace Df\Amazon\Block;
 use Df\Amazon\Settings as S;
-use Df\Amazon\Settings\Login\Credentials as C;
+use Df\Amazon\Settings\Login as SLogin;
+use Df\Amazon\Settings\Login\Credentials as SCredentials;
 use Magento\Framework\View\Element\AbstractBlock;
 /**
  * 2016-06-02
@@ -16,7 +17,7 @@ class Login extends AbstractBlock {
 	 */
 	protected function _toHtml() {
 		/** @var string $result */
-		if (!S::s()->enable()) {
+		if (!SLogin::s()->enable()) {
 			$result = '';
 		}
 		else if (df_customer_logged_in()) {
@@ -27,7 +28,7 @@ class Login extends AbstractBlock {
 			$domId = df_uid(4, 'df-amazon-');
 			$result =
 				df_x_magento_init('Df_Amazon/login', $this['jsOptions'] + [
-					'clientId' => C::s()->id()
+					'clientId' => SCredentials::s()->id()
 					,'domId' => $domId
 					,'loggedIn' => df_customer_logged_in()
 					,'merchantId' => S::s()->merchantId()

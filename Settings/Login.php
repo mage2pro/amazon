@@ -18,7 +18,7 @@ class Login extends \Df\Core\Settings {
 	 * @used-by \Df\Core\Settings::v()
 	 * @return string
 	 */
-	protected function prefix() {return 'df_payment/amazon/login/';}
+	protected function prefix() {return 'df_amazon/login/';}
 }
 
 

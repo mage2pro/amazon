@@ -12,7 +12,7 @@
 			<block
 				class='Df\Amazon\Block\Login'
 				name='df.amazon.login-customer.account.login'
-				ifconfig='df_payment/amazon/login/locations/loginPage'
+				ifconfig='df_amazon/login/locations/loginPage'
 				before='-'
 			>
 				<arguments>

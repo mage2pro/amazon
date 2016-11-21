@@ -1,6 +1,5 @@
 <?php
 namespace Df\Amazon\Settings\Login;
-use Magento\Framework\App\ScopeInterface as S;
 /**
  * 2016-06-02
  * «Mage2.PRO» → «Login and Pay with Amazon» → «Login with Amazon» → «Button Locations»
@@ -14,7 +13,7 @@ class Locations extends \Df\Core\Settings {
 	 * @used-by \Df\Core\Settings::v()
 	 * @return string
 	 */
-	protected function prefix() {return 'df_payment/amazon/login/locations/';}
+	protected function prefix() {return 'df_amazon/login/locations/';}
 }
 
 

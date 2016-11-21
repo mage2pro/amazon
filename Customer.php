@@ -114,12 +114,7 @@ class Customer extends \Df\Customer\External\Customer {
 	 * 2016-06-04
 	 * @return string[]
 	 */
-	private function nameA() {
-		if (!isset($this->{__METHOD__})) {
-			$this->{__METHOD__} = explode(' ', $this->nameFull());
-		}
-		return $this->{__METHOD__};
-	}
+	private function nameA() {return dfc($this, function() {return explode(' ', $this->nameFull());});}
 
 	/**
 	 * 2016-06-04
@@ -180,15 +175,12 @@ class Customer extends \Df\Customer\External\Customer {
 	 * 2016-06-04
 	 * @param string $path
 	 * @param string $key
-	 * @param string|null $default [optional]
+	 * @param string|null $d [optional]
 	 * @return array(string => string)
 	 */
-	private function response($path, $key, $default = null) {
-		if (!isset($this->{__METHOD__}[$path])) {
-			$this->{__METHOD__}[$path] = df_http_json($this->url($path));
-		}
-		return dfa($this->{__METHOD__}[$path], $key, $default);
-	}
+	private function response($path, $key, $d = null) {return dfa(dfc($this, function($path) {return
+		df_http_json($this->url($path))
+	;}, [$path]), $key, $d);}
 
 	/**
 	 * 2016-06-04

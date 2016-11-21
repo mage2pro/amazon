@@ -1,7 +1,7 @@
 <?php
 namespace Df\Amazon;
 use Df\Amazon\Settings as S;
-use Df\Amazon\Settings\Login\Credentials as C;
+use Dfe\AmazonLogin\Settings\Credentials;
 class Customer extends \Df\Customer\External\Customer {
 	/**
 	 * 2016-06-04
@@ -107,7 +107,7 @@ class Customer extends \Df\Customer\External\Customer {
 		 * If they are different, the access token was not requested by your application,
 		 * and you should not use the access token.»
 		 */
-		df_assert_eq(C::s()->id(), $this->response('auth/o2/tokeninfo', 'aud'));
+		df_assert_eq(Credentials::s()->id(), $this->response('auth/o2/tokeninfo', 'aud'));
 	}
 
 	/**

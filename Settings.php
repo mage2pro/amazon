@@ -1,13 +1,7 @@
 <?php
+// 2016-06-02
 namespace Df\Amazon;
-use Df\Amazon\Settings\Login;
-use Magento\Framework\App\ScopeInterface as S;
-/**
- * 2016-06-02
- * «Mage2.PRO» → «Login and Pay with Amazon»
- *
- * @method static Settings s()
- */
+/** @method static Settings s() */
 final class Settings extends \Df\Core\Settings {
 	/**
 	 * 2016-06-02
@@ -15,15 +9,10 @@ final class Settings extends \Df\Core\Settings {
 	 */
 	public function init() {
 		if (!isset($this->{__METHOD__})) {
-			if (df_is_frontend()) {
-				$r = df_block_r(null, [], 'Df_Amazon::init');
-			}
+			df_is_frontend() ? df_block_r(null, [], 'Df_Amazon::init') : null;
 			$this->{__METHOD__} = true;
 		}
 	}
-
-	/** @return Login */
-	public function login() {return Login::s();}
 
 	/**
 	 * 2016-06-03

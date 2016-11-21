@@ -1,8 +1,8 @@
 <?php
 namespace Df\Amazon\Block;
 use Df\Amazon\Settings as S;
-use Df\Amazon\Settings\Login as SLogin;
-use Df\Amazon\Settings\Login\Credentials as SCredentials;
+use Dfe\AmazonLogin\Settings as SLogin;
+use Dfe\AmazonLogin\Settings\Credentials as SCredentials;
 use Magento\Framework\View\Element\AbstractBlock;
 /**
  * 2016-06-02

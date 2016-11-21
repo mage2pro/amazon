@@ -10,7 +10,7 @@
 				near to the standard «Sign In» and «Create an Account» links.
 			-->
 			<block
-				class='Df\Amazon\Block\Login'
+				class='Dfe\AmazonLogin\Button'
 				name='df.amazon.login-customer.account.login'
 				ifconfig='df_amazon/login/locations/loginPage'
 				before='-'

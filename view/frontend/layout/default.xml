@@ -10,7 +10,7 @@
 				above the standard «Registered Customers<» and «New Customers» blocks.
 			-->
 			<block
-				class='Df\Amazon\Block\Login'
+				class='Dfe\AmazonLogin\Button'
 				name='df.amazon.login-header'
 				ifconfig='df_amazon/login/locations/header'
 				before='-'

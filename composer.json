@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/amazon"
-	,"version": "1.0.0"
+	,"version": "1.0.1"
 	,"description": "A core package for the Amazon APIs."
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions"
@@ -12,7 +12,7 @@
 		"role": "Developer"
 	}]
 	,"require": {
-		"mage2pro/core": "^1.6.2"
+		"mage2pro/core": "^1.9.11"
 		, "amzn/login-and-pay-with-amazon-sdk-php": "*"
 	}
 	,"autoload": {"files": ["registration.php"], "psr-4": {"Df\\Amazon\\": ""}}

@@ -2,7 +2,8 @@
 namespace Df\Amazon\Controller\Login;
 use Df\Customer\External\ReturnT;
 use Df\Amazon\Customer;
-use Df\Amazon\Setup\InstallSchema;
+use Df\Framework\Plugin\View\Layout as PluginLayout;
+use Dfe\AmazonLogin\Setup\InstallSchema as Schema;
 /**
  * 2016-06-04
  * «Integrate with Your Existing Account System»
@@ -68,7 +69,7 @@ class Index extends ReturnT {
 	 * @used-by \Df\Customer\External\ReturnT::customer()
 	 * @return string
 	 */
-	protected function customerIdFieldName() {return InstallSchema::F__ID;}
+	protected function customerIdFieldName() {return Schema::F__ID;}
 
 	/**
 	 * 2016-06-05
@@ -91,9 +92,9 @@ class Index extends ReturnT {
 	 * @used-by \Df\Customer\External\ReturnT::execute()
 	 * @return void
 	 */
-	protected function postProcess() {
-		df_cookie_m()->setPublicCookie('df_need_update_customer_data', 1, df_cookie_metadata_standard());
-	}
+	protected function postProcess() {df_cookie_m()->setPublicCookie(
+		PluginLayout::NEED_UPDATE_CUSTOMER_DATA, 1, df_cookie_metadata_standard()
+	);}
 
 	/**
 	 * 2016-06-05

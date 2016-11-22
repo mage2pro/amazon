@@ -7,12 +7,9 @@ final class Settings extends \Df\Core\Settings {
 	 * 2016-06-02
 	 * @return void
 	 */
-	public function init() {
-		if (!isset($this->{__METHOD__})) {
-			df_is_frontend() ? df_block_r(null, [], 'Df_Amazon::init') : null;
-			$this->{__METHOD__} = true;
-		}
-	}
+	public function init() {dfc($this, function() {return
+		!df_is_frontend() ? null : df_phtml(__CLASS__, 'init')
+	;});}
 
 	/**
 	 * 2016-06-03

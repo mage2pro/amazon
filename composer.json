@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/amazon"
-	,"version": "1.0.8"
+	,"version": "1.0.9"
 	,"description": "A core package for the Amazon APIs."
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions"

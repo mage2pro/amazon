@@ -17,9 +17,7 @@ class JsOrigin extends \Df\Framework\Form\Element\Url {
 	 * @see \Df\Framework\Form\Element\Url::url()
 	 * @return string
 	 */
-	protected function url() {return dfc($this, function() {return
-		df_url_strip_path(parent::url())
-	;});}
+	protected function url() {return dfc($this, function() {return df_url_strip_path(parent::url());});}
 
 	/**
 	 * 2016-05-31

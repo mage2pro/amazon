@@ -13,7 +13,6 @@ final class Settings extends \Df\Config\Settings {
 
 	/**
 	 * 2016-06-03
-	 * «Mage2.PRO» → «Payment» → «2Checkout» → «Live API Username»
 	 * @return string
 	 */
 	public function merchantId() {return $this->v();}
@@ -32,7 +31,7 @@ final class Settings extends \Df\Config\Settings {
 	 * @used-by \Df\Config\Settings::v()
 	 * @return string
 	 */
-	protected function prefix() {return 'df_payment/amazon';}
+	protected function prefix() {return 'df_amazon/common';}
 }
 
 

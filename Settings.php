@@ -7,7 +7,7 @@ final class Settings extends \Df\Config\Settings {
 	 * 2016-06-02
 	 * @return void
 	 */
-	public function init() {dfc($this, function() {return
+	function init() {dfc($this, function() {return
 		!df_is_frontend() ? null : df_phtml(__CLASS__, 'init')
 	;});}
 
@@ -15,14 +15,14 @@ final class Settings extends \Df\Config\Settings {
 	 * 2016-06-03
 	 * @return string
 	 */
-	public function merchantId() {return $this->v();}
+	function merchantId() {return $this->v();}
 
 	/**
 	 * 2016-06-03
 	 * «Sandbox Mode?»
 	 * @return bool
 	 */
-	public function test() {return $this->b();}
+	function test() {return $this->b();}
 
 	/**
 	 * 2016-06-02

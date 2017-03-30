@@ -4,14 +4,6 @@ namespace Df\Amazon;
 /** @method static Settings s() */
 final class Settings extends \Df\Config\Settings {
 	/**
-	 * 2016-06-02
-	 * @return void
-	 */
-	function init() {dfc($this, function() {return
-		!df_is_frontend() ? null : df_phtml(__CLASS__, 'init')
-	;});}
-
-	/**
 	 * 2016-06-03
 	 * @return string
 	 */

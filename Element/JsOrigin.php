@@ -10,22 +10,14 @@ class JsOrigin extends \Df\Framework\Form\Element\Url {
 	 * @used-by \Df\Framework\Form\Element\Url::getElementHtml()
 	 * @return string
 	 */
-	protected function messageForThirdPartyLocalhost() {return $this->messageForOthers();}
+	final protected function messageForThirdPartyLocalhost() {return $this->messageForOthers();}
 
 	/**
 	 * 2016-05-31
 	 * @override
-	 * @see \Df\Framework\Form\Element\Url::url()
+	 * @see \Df\Framework\Form\Element\Url::url()   
+	 * @used-by \Df\Framework\Form\Element\Url::messageForOthers()
 	 * @return string
 	 */
-	protected function url() {return dfc($this, function() {return df_url_base(parent::url());});}
-
-	/**
-	 * 2016-05-31
-	 * @override
-	 * @see \Df\Framework\Form\Element\Url::urlForMyLocalPc()
-	 * @used-by \Df\Framework\Form\Element\Url::url()
-	 * @return string
-	 */
-	protected function urlForMyLocalPc() {return $this->urlForOthers();}
+	final protected function url() {return df_url_base(parent::url());}
 }

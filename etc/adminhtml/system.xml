@@ -72,7 +72,7 @@
 				<field
 					id='allowedJavaScriptOrigin'
 					translate='label'
-					type='Df\Amazon\Element\JsOrigin'
+					type='Df\Amazon\FE\JsOrigin'
 					dfWebhook_requireHTTPS='true'
 					sortOrder='3'
 					showInDefault='1'

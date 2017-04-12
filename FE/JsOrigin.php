@@ -10,5 +10,7 @@ class JsOrigin extends \Df\Framework\Form\Element\Url {
 	 * @used-by \Df\Framework\Form\Element\Url::messageForOthers()
 	 * @return string
 	 */
-	final protected function url() {return df_url_base(parent::url());}
+	final protected function url() {return df_url_base(df_url_frontend(null, [
+		'_secure' => $this->requireHttps() ? true : null
+	]));}
 }

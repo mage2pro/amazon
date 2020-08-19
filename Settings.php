@@ -1,5 +1,5 @@
 <?php
-// 2016-06-02
+# 2016-06-02
 namespace Df\Amazon;
 /** @method static Settings s() */
 final class Settings extends \Df\Config\Settings {

@@ -1,13 +1,14 @@
 <?php
-# 2016-06-02
 namespace Df\Amazon;
+# 2016-06-02
 /** @method static Settings s() */
 final class Settings extends \Df\Config\Settings {
 	/**
 	 * 2016-06-03
-	 * @return string
+	 * @used-by \Df\GingerPaymentsBase\Test\GetMerchant::t01()
+	 * @used-by \Dfe\AmazonLogin\Button::jsOptions()
 	 */
-	function merchantId() {return $this->v();}
+	function merchantId():string {return $this->v();}
 
 	/**
 	 * 2016-06-03 «Sandbox Mode?»

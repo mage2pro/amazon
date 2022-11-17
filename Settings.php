@@ -25,5 +25,3 @@ final class Settings extends \Df\Config\Settings {
 	 */
 	protected function prefix():string {return 'df_amazon/common';}
 }
-
-

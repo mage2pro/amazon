@@ -14,9 +14,8 @@ final class Settings extends \Df\Config\Settings {
 	 * 2016-06-03 «Sandbox Mode?»
 	 * @used-by \Dfe\AmazonLogin\Button::jsOptions()
 	 * @used-by \Dfe\AmazonLogin\Customer::url()
-	 * @return bool
 	 */
-	function test() {return $this->b();}
+	function test():bool {return $this->b();}
 
 	/**
 	 * 2016-06-02

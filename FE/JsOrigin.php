@@ -1,5 +1,5 @@
 <?php
-namespace Df\Amazon\FE;
+namespace Dfe\Amazon\FE;
 # 2016-05-30
 /** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
 class JsOrigin extends \Df\Framework\Form\Element\Url {

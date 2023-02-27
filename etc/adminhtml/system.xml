@@ -13,7 +13,7 @@
 			<label>Amazon</label>
 			<class>separator-top</class>
 			<!-- 2015-10-05 https://mage2.pro/t/114 -->
-			<resource>Df_Amazon::config</resource>
+			<resource>Dfe_Amazon::config</resource>
 <!-- 2015-09-25, 2017-10-22
 Magento 2 is not capable to automatically order settings groups
 in the backend «Stores» → «Configuration» left menu by alphabet.
@@ -70,7 +70,7 @@ So the `sortOrder` value is 1920. -->
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='3'
 					translate='label'
-					type='Df\Amazon\FE\JsOrigin'
+					type='Dfe\Amazon\FE\JsOrigin'
 				>
 					<label>Allowed JavaScript Origins</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/1738' target='_blank'>Set it in your Amazon Seller account.</a>]]></comment>

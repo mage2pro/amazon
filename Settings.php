@@ -5,7 +5,6 @@ namespace Dfe\Amazon;
 final class Settings extends \Df\Config\Settings {
 	/**
 	 * 2016-06-03
-	 * @used-by \Df\GingerPaymentsBase\Test\GetMerchant::t01()
 	 * @used-by \Dfe\AmazonLogin\Button::jsOptions()
 	 */
 	function merchantId():string {return $this->v();}
